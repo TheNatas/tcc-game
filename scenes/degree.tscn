@@ -1,0 +1,19 @@
+[gd_scene load_steps=3 format=3 uid="uid://bdwffyaup4v2g"]
+
+[ext_resource type="Script" uid="uid://bifoui6ni4byu" path="res://scripts/degree.gd" id="1_mqd32"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_7jktm"]
+size = Vector2(892, 48)
+
+[node name="degree" type="Area2D"]
+script = ExtResource("1_mqd32")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(428, 10)
+shape = SubResource("RectangleShape2D_7jktm")
+
+[node name="Label" type="Label" parent="."]
+offset_right = 40.0
+offset_bottom = 23.0
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

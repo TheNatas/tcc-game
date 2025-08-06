@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3 uid="uid://dsjl8wysn7bd7"]
+
+[ext_resource type="Script" uid="uid://dts7f6vifkk2n" path="res://scenes/failed_level.gd" id="1_j37rp"]
+
+[node name="failed_level" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+script = ExtResource("1_j37rp")
