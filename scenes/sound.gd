@@ -6,7 +6,7 @@ signal playing_degree_changed(current_playing_degree: int)
 
 # MIDI notes you want to cycle through (e.g., C4, D4, E4, F4, G4, A4, B4)
 const chords = ['C', 'Dm', 'Em', 'F', 'G', 'Am', 'Bm7']
-const SOUND_EFFECTS = {
+const SOUNDS = {
 	"C": preload("res://assets/C.wav"),
 	"Dm": preload("res://assets/Dm.wav"),
 	"Em": preload("res://assets/Em.wav"),
@@ -27,8 +27,8 @@ func _ready():
 func play_sound(chord_index: int):
 	var chord = chords[chord_index]
 	
-	if SOUND_EFFECTS.has(chord):
-		stream = SOUND_EFFECTS[chord]
+	if SOUNDS.has(chord):
+		stream = SOUNDS[chord]
 		play()
 		emit_signal("playing_degree_changed", chord_index)
 	else:
