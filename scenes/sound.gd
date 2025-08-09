@@ -4,7 +4,6 @@ extends AudioStreamPlayer2D
 
 signal playing_degree_changed(current_playing_degree: int)
 
-# MIDI notes you want to cycle through (e.g., C4, D4, E4, F4, G4, A4, B4)
 const chords = ['C', 'Dm', 'Em', 'F', 'G', 'Am', 'Bm7']
 const SOUNDS = {
 	"C": preload("res://assets/C.wav"),
@@ -15,6 +14,73 @@ const SOUNDS = {
 	"Am": preload("res://assets/Am.wav"),
 	"Bm7": preload("res://assets/Bm7.wav"),
 }
+const SONGS = [
+	{
+		"level": 0, # Beginner: slow, simple chords
+		"chords": [
+			{ "chord": "C",  "duration": 8 },
+			{ "chord": "G",  "duration": 8 },
+			{ "chord": "Am", "duration": 8 },
+			{ "chord": "F",  "duration": 8 },
+			{ "chord": "C",  "duration": 8 },
+			{ "chord": "F",  "duration": 8 },
+			{ "chord": "C",  "duration": 8 },
+			{ "chord": "G",  "duration": 8 },
+			{ "chord": "C",  "duration": 8 }
+		] # Total: 72s
+	},
+	{
+		"level": 1, # Intermediate: faster changes, more chords
+		"chords": [
+			{ "chord": "Dm", "duration": 6 },
+			{ "chord": "G",  "duration": 6 },
+			{ "chord": "C",  "duration": 6 },
+			{ "chord": "Am", "duration": 6 },
+			{ "chord": "F",  "duration": 6 },
+			{ "chord": "G",  "duration": 6 },
+			{ "chord": "Em", "duration": 6 },
+			{ "chord": "Am", "duration": 6 },
+			{ "chord": "Dm", "duration": 6 },
+			{ "chord": "G",  "duration": 6 },
+			{ "chord": "C",  "duration": 6 },
+			{ "chord": "C",  "duration": 6 },
+			{ "chord": "F",  "duration": 6 },
+			{ "chord": "G",  "duration": 6 },
+			{ "chord": "C",  "duration": 6 }
+		] # Total: 90s
+	},
+	{
+		"level": 2, # Advanced: more variety, faster tempo
+		"chords": [
+			{ "chord": "Am", "duration": 4 },
+			{ "chord": "F",  "duration": 4 },
+			{ "chord": "C",  "duration": 4 },
+			{ "chord": "G",  "duration": 4 },
+			{ "chord": "Em", "duration": 4 },
+			{ "chord": "Am", "duration": 4 },
+			{ "chord": "F",  "duration": 4 },
+			{ "chord": "C",  "duration": 4 },
+			{ "chord": "G",  "duration": 4 },
+			{ "chord": "Dm", "duration": 4 },
+			{ "chord": "G",  "duration": 4 },
+			{ "chord": "C",  "duration": 4 },
+			{ "chord": "Am", "duration": 4 },
+			{ "chord": "F",  "duration": 4 },
+			{ "chord": "C",  "duration": 4 },
+			{ "chord": "G",  "duration": 4 },
+			{ "chord": "Em", "duration": 4 },
+			{ "chord": "Am", "duration": 4 },
+			{ "chord": "F",  "duration": 4 },
+			{ "chord": "C",  "duration": 4 },
+			{ "chord": "G",  "duration": 4 },
+			{ "chord": "C",  "duration": 4 },
+			{ "chord": "F",  "duration": 4 },
+			{ "chord": "G",  "duration": 4 },
+			{ "chord": "C",  "duration": 4 }
+		] # Total: 100s
+	}
+]
+
 const STARTING_DEGREE = 3
 const NOTES_SWITCH_COOLDOWN = 5
 var time_since_last_play = 0.0  # Time accumulator
@@ -22,9 +88,16 @@ var current_playing_degree = STARTING_DEGREE
 
 func _ready():
 	connect("playing_degree_changed", Callable(gameplay_scene, &"_on_sound_playing_degree_changed"))
-	play_sound(STARTING_DEGREE)
 	
-func play_sound(chord_index: int):
+	#future implementation: randomize songs filtering by current level
+	#var rng = RandomNumberGenerator.new()
+	#var song_index = rng.randi_range(0, SONGS.size())
+	start_song(0)
+	
+func start_song(song_index: int):
+	play_chord(SONGS[song_index].chords[0])
+	
+func play_chord(chord_index: int):
 	var chord = chords[chord_index]
 	
 	if SOUNDS.has(chord):
@@ -40,7 +113,9 @@ func _process(delta):
 		time_since_last_play = 0.0  # Reset timer
 		if randi() % 2 == 0:
 			current_playing_degree = randi() % 7
-			play_sound(current_playing_degree)
+			play_chord(current_playing_degree)
+			
+	
 
 
 func _on_finished() -> void:
