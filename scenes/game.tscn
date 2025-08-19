@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://bv42vhne04itj"]
 
-[ext_resource type="Script" uid="uid://bqb428greqmq6" path="res://scenes/game_start.gd" id="1_vtaks"]
+[ext_resource type="Script" uid="uid://bqb428greqmq6" path="res://scripts/modules/game_start/game_start.gd" id="1_vtaks"]
 
 [node name="game_start" type="Node2D"]
 position = Vector2(86, 52)

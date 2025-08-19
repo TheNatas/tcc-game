@@ -30,3 +30,6 @@ var levels_textures = [
 	'res://assets/ChatGPT Image 4 de ago. de 2025, 19_34_58.png',
 	'res://assets/ChatGPT Image 4 de ago. de 2025, 19_45_58.png'
 ]
+
+var notes_switches_on_current_level = 0
+var right_notes_on_current_level = 0

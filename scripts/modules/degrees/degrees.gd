@@ -7,7 +7,7 @@ const DEGREE_HEIGHT := 60
 const DEGREE_GAP := 20
 const DEGREE_WIDTH_PERCENT := 0.8
 
-var degree_scene := preload("res://scripts/degree.gd") # The script, not a scene – we’ll create the node manually
+var degree_scene := preload("res://scripts/modules/degrees/degree.gd") # The script, not a scene – we’ll create the node manually
 
 func _ready():
 	for i in range(TOTAL_DEGREES):

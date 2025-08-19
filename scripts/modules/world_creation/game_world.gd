@@ -3,7 +3,7 @@ extends Node2D
 @onready var map = $map
 @onready var player = $player
 
-@onready var levels_data = preload("res://scripts/levels.gd").new()
+@onready var levels_data = preload("res://scripts/modules/levels/levels.gd").new()
 
 func _ready():
 	resize_map_to_screen()

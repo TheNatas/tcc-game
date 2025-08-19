@@ -1,4 +1,4 @@
-# dialog.gd (attached to a Control node)
+# used for the Feedback node (not currently working, but the unhandled input logic could be reused in context.gd)
 extends Control
 
 signal dialog_finished
