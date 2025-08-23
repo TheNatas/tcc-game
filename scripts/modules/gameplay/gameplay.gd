@@ -58,9 +58,9 @@ func _on_sound_playing_degree_changed(current_playing_degree: int) -> void:
 	var label = text_balloon.get_node("Label")
 	if current_playing_degree == player_current_degree:
 		Levels.right_notes_on_current_level += 1
-		label.text = "Bom trabalho!"
+		#label.text = "Bom trabalho!"
 	else:
-		label.text = "Grau errado, chefe"
+		#label.text = "Grau errado, chefe"
 		highlight_degree(player_current_degree, Color(1,0,0))
 		highlight_degree(current_playing_degree, Color(0,1,0))
 	await get_tree().create_timer(3).timeout

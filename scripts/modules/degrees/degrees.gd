@@ -18,10 +18,13 @@ func _ready():
 			i * (DEGREE_HEIGHT + DEGREE_GAP)
 		)
 		degree.set_script(degree_scene)
+		degree.add_to_group(degree.name)
 		
 		# Connect signals
 		degree.connect("body_entered", Callable(degree, "_on_body_entered"))
 		degree.connect("player_entered_degree", Callable(player, &"_on_degree_player_entered_degree"))
+		degree.connect("body_exited", Callable(degree, "_on_body_exited"))
+		degree.connect("player_exited_degree", Callable(player, &"_on_degree_player_exited_degree"))
 
 		# Create ColorRect
 		var rect = ColorRect.new()

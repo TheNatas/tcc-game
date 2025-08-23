@@ -2,11 +2,13 @@ extends Node2D
 
 @onready var map = $map
 @onready var player = $player
+@onready var collision = $CollisionShape2D
 
 @onready var levels_data = preload("res://scripts/modules/levels/levels.gd").new()
 
 func _ready():
 	resize_map_to_screen()
+	render_player()
 
 func resize_map_to_screen():
 	var screen_size = get_viewport_rect().size
@@ -33,6 +35,7 @@ func resize_map_to_screen():
 # Example in a scene or script where you want to create the player
 func render_player():
 	player.name = "player"
+	player.scale = Vector2(0.359, 0.359)
 
 	# --- Sprite2D ---
 	var sprite = Sprite2D.new()
@@ -41,9 +44,12 @@ func render_player():
 
 	# --- CollisionShape2D ---
 	var collision = CollisionShape2D.new()
-	var shape = RectangleShape2D.new()
-	shape.extents = Vector2(16, 16)  # Adjust to match your sprite size
-	collision.shape = shape
+	if sprite.texture:
+		var tex_size = sprite.texture.get_size()
+		var rect_shape = RectangleShape2D.new()
+		rect_shape.extents = tex_size / 2.0   # half because extents = half-size
+		collision.shape = rect_shape
+
 	player.add_child(collision)
 
 	# --- TextBalloon (Node2D or Control type) ---
@@ -63,3 +69,11 @@ func render_player():
 
 	# Optional: set position
 	player.position = Vector2(200, 200)
+	
+	var tex_size = sprite.texture.get_size()
+	var final_size = tex_size * sprite.scale
+	var collision_size = collision.shape.extents * 2
+	
+	var rect = collision.shape.extents * 2
+	draw_rect(Rect2(-collision.shape.extents, rect), Color(1, 0, 0, 0.3), true)
+	draw_rect(Rect2(-collision.shape.extents, rect), Color(1, 0, 0), false)
