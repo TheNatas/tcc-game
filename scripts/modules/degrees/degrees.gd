@@ -48,6 +48,7 @@ func _ready():
 		shape.size = rect.size
 		collision.shape = shape
 		collision.position = rect.size / 2
+		collision.add_to_group(degree.name + '/collision')
 		degree.add_child(collision)
 		
 		# Reposition the player accordingly to the degrees

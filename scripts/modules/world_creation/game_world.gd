@@ -50,6 +50,7 @@ func render_player():
 		rect_shape.extents = tex_size / 2.0   # half because extents = half-size
 		collision.shape = rect_shape
 
+	collision.add_to_group("player/collision")
 	player.add_child(collision)
 
 	# --- TextBalloon (Node2D or Control type) ---
