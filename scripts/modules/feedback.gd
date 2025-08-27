@@ -79,7 +79,7 @@ func _on_gameplay_feedback_status_changed(new_status: String):
 	var feedback_index = rng.randi_range(0, 2)
 	var current_status_dialog_lines = dialog_lines.positive if new_status == "positive" else dialog_lines.negative
 	label.text = current_status_dialog_lines[feedback_index]
-	print(current_status_dialog_lines)
-	print(label.text)
+	#print(current_status_dialog_lines)
+	#print(label.text)
 	await get_tree().create_timer(3).timeout
 	visible = false

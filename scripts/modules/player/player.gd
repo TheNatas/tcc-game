@@ -30,6 +30,7 @@ func _update_current_degree() -> void:
 
 	var best_degree := -1
 	var max_overlap := 0.0
+	var best_degree_rect
 
 	# Get player rect
 	var player_shape: CollisionShape2D = get_tree().get_first_node_in_group("player/collision")
@@ -42,18 +43,30 @@ func _update_current_degree() -> void:
 		var degree_rect: Rect2 = _get_shape_rect(degree_shape)
 
 		var overlap: Rect2 = player_rect.intersection(degree_rect)
+		print("Degree ", degree_index, " overlap: ", overlap.size)
 		if overlap.has_area():
 			var area: float = overlap.size.x * overlap.size.y
-			if area > max_overlap:
+			#if area > max_overlap:
+				#max_overlap = area
+				#best_degree = degree_index
+			if area > max_overlap or (area == max_overlap and degree_rect.position.y < best_degree_rect.position.y):
 				max_overlap = area
 				best_degree = degree_index
+				best_degree_rect = degree_rect
 
 	if best_degree != -1 and best_degree != current_degree:
 		current_degree = best_degree
 		emit_signal("player_degree_changed", current_degree)
 
+#func _get_shape_rect(cshape: CollisionShape2D) -> Rect2:
+	#var extents = cshape.shape.extents if cshape.shape is RectangleShape2D else Vector2.ONE
+	#var rect_size = extents * 2.0 * cshape.scale
+	#var rect_pos = cshape.global_position - rect_size / 2.0
+	#return Rect2(rect_pos, rect_size)
+
 func _get_shape_rect(cshape: CollisionShape2D) -> Rect2:
-	var extents = cshape.shape.extents if cshape.shape is RectangleShape2D else Vector2.ONE
-	var rect_size = extents * 2.0 * cshape.scale
-	var rect_pos = cshape.global_position - rect_size / 2.0
-	return Rect2(rect_pos, rect_size)
+	if cshape.shape is RectangleShape2D:
+		var rect_size = cshape.shape.extents * 2 * cshape.global_scale
+		var rect_pos = cshape.global_position - rect_size / 2
+		return Rect2(rect_pos, rect_size)
+	return Rect2(cshape.global_position, Vector2.ZERO)

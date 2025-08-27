@@ -36,17 +36,18 @@ func resize_map_to_screen():
 
 func render_player():
 	player.name = "player"
-	player.scale = Vector2(0.359, 0.359)
+	player.scale = Vector2(0.2, 0.2)
 
 	# --- Sprite2D ---
 	var sprite = Sprite2D.new()
-	sprite.texture = preload("res://assets/icon.svg")
+	sprite.texture = preload("res://assets/player4.png")
 	player.add_child(sprite)
 
 	# --- CollisionShape2D ---
 	var collision = CollisionShape2D.new()
 	if sprite.texture:
 		var tex_size = sprite.texture.get_size()
+		print(tex_size)
 		var rect_shape = RectangleShape2D.new()
 		rect_shape.extents = tex_size / 2.0   # half because extents = half-size
 		collision.shape = rect_shape
@@ -68,12 +69,6 @@ func render_player():
 
 	# Finally, add the player to the scene
 	add_child(player)
-
-	# Optional: set position
-	#player.position = Vector2(
-		#200,
-		#(1.0) * 0.5 * get_viewport_rect().size.y, 
-	#)
 	
 	var tex_size = sprite.texture.get_size()
 	var final_size = tex_size * sprite.scale
