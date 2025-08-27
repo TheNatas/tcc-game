@@ -31,7 +31,9 @@ func _ready():
 	#future implementation: randomize songs filtering by current level
 	#var rng = RandomNumberGenerator.new()
 	#var song_index = rng.randi_range(0, SONGS.size())
-	var current_song = Globals.SONGS[Globals.current_level]
+	#var current_song = Globals.SONGS[Globals.current_level]
+	var songs_of_current_level = Globals.SONGS.filter(func(s): return s.level == Globals.current_level)
+	var current_song = songs_of_current_level.pick_random()
 	start_song(current_song)
 	
 func start_song(song: Song):

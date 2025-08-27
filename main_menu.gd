@@ -1,5 +1,8 @@
 extends Control
 
+@onready var start_button: Button = null
+@onready var exit_button: Button = null
+
 func _ready() -> void:
 	# Make this root control fill the window
 	anchor_left = 0.0
@@ -29,23 +32,26 @@ func _ready() -> void:
 	add_child(vbox)
 
 	# Start Game Button
-	var start_button := Button.new()
+	start_button = Button.new()
 	start_button.text = "Start Game"
 	start_button.custom_minimum_size = Vector2(150, 40)
 	vbox.add_child(start_button)
 	start_button.connect("pressed", Callable(self, "_on_start_game_pressed"))
 
 	# Exit Button
-	var exit_button := Button.new()
+	exit_button = Button.new()
 	exit_button.text = "Exit"
 	exit_button.custom_minimum_size = Vector2(150, 40)
 	vbox.add_child(exit_button)
 	exit_button.connect("pressed", Callable(self, "_on_exit_pressed"))
 
+	# Set initial focus to Start button
+	start_button.grab_focus()
+
 
 func _on_start_game_pressed() -> void:
 	var is_game_finished = Globals.current_level == 3
-	if is_game_finished: 
+	if is_game_finished:
 		Globals.current_level = 0 # reset game
 	get_tree().change_scene_to_file("res://scenes/context.tscn")
 
