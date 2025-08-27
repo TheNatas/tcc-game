@@ -23,7 +23,7 @@ func highlight_degree(degree_index: int, color_to_paint: Color) -> void:
 	var degree_color_node = get_tree().get_first_node_in_group("degree" + str(degree_index) + "/ColorRect")
 	degree_color_node.color = color_to_paint
 	await get_tree().create_timer(3).timeout
-	degree_color_node.color = Color(1, 1, 1, 0.196)
+	degree_color_node.color = Color(0, 0, 0, 0.196)
 	
 func finish_level() -> void:
 	var right_notes_percent = (float(Levels.right_notes_on_current_level) / MAX_NUMBER_OF_NOTES_SWITCHES_PER_LEVEL) * 100

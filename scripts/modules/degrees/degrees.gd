@@ -15,14 +15,14 @@ func _ready():
 	# Calculate total height of all degrees including gaps
 	var total_height = TOTAL_DEGREES * DEGREE_HEIGHT + (TOTAL_DEGREES - 1) * DEGREE_GAP
 	# Starting Y so that everything is vertically centered
-	var start_y = (viewport_size.y - total_height) / 2
+	var start_y = (viewport_size.y + total_height) / 2
 
 	for i in range(TOTAL_DEGREES):
 		var degree = Area2D.new()
 		degree.name = "degree%d" % i
 		degree.position = Vector2(
 			(1.0 - DEGREE_WIDTH_PERCENT) * 0.5 * viewport_size.x,
-			start_y + i * (DEGREE_HEIGHT + DEGREE_GAP)
+			start_y - i * (DEGREE_HEIGHT + DEGREE_GAP)
 		)
 		degree.set_script(degree_script)
 		degree.add_to_group(degree.name)
