@@ -35,7 +35,8 @@ func _ready():
 
 		# Create ColorRect
 		var rect = ColorRect.new()
-		rect.color = Color(1, 1, 1, 0.196)
+		#rect.color = Color(0, 0, 1, 0.196) if Globals.current_level == 0 else Color(1, 0, 1, 0.196) if Globals.current_level == 1 else Color(1, 0, 0, 0.196)
+		rect.color = Color(0, 0, 0, 0.196)
 		rect.size = Vector2(viewport_size.x * DEGREE_WIDTH_PERCENT, DEGREE_HEIGHT)
 		rect.anchor_right = 0
 		rect.anchor_bottom = 0
