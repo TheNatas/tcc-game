@@ -70,10 +70,10 @@ func render_player():
 	add_child(player)
 
 	# Optional: set position
-	player.position = Vector2(
-		200,
-		(1.0) * 0.5 * get_viewport_rect().size.y, 
-	)
+	#player.position = Vector2(
+		#200,
+		#(1.0) * 0.5 * get_viewport_rect().size.y, 
+	#)
 	
 	var tex_size = sprite.texture.get_size()
 	var final_size = tex_size * sprite.scale

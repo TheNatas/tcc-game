@@ -58,5 +58,9 @@ func _ready():
 		collision.position = rect.size / 2
 		collision.add_to_group(degree.name + '/collision')
 		degree.add_child(collision)
+		
+		# Position player on main degree
+		if i == 0:
+			player.position = Vector2(200, degree.position.y)
 
 		add_child(degree)

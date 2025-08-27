@@ -43,6 +43,7 @@ var SONGS : Array[Song] = [
 	# Intermediate (level 1) – faster changes, more chords
 	# ----------------
 	Song.new(1, [
+		Chord.new("C", 6),
 		Chord.new("Dm", 6),
 		Chord.new("G", 6),
 		Chord.new("C", 6),
@@ -58,9 +59,10 @@ var SONGS : Array[Song] = [
 		Chord.new("F", 6),
 		Chord.new("G", 6),
 		Chord.new("C", 6),
-	]), # ~90s
+	]), # ~96s
 
 	Song.new(1, [
+		Chord.new("C", 8),
 		Chord.new("Am", 8),
 		Chord.new("F", 8),
 		Chord.new("C", 8),
@@ -72,7 +74,7 @@ var SONGS : Array[Song] = [
 		Chord.new("Am", 8),
 		Chord.new("F", 8),
 		Chord.new("C", 8),
-	]), # ~88s
+	]), # ~96s
 
 	Song.new(1, [
 		Chord.new("C", 5),
@@ -94,6 +96,7 @@ var SONGS : Array[Song] = [
 	# Advanced (level 2) – more variety, quicker tempo
 	# ----------------
 	Song.new(2, [
+		Chord.new("C", 4),
 		Chord.new("Am", 4),
 		Chord.new("F", 4),
 		Chord.new("C", 4),
@@ -119,9 +122,10 @@ var SONGS : Array[Song] = [
 		Chord.new("F", 4),
 		Chord.new("G", 4),
 		Chord.new("C", 4),
-	]), # ~100s
+	]), # ~104s
 
 	Song.new(2, [
+		Chord.new("C", 6),
 		Chord.new("Em", 6),
 		Chord.new("C", 6),
 		Chord.new("G", 6),
@@ -135,9 +139,10 @@ var SONGS : Array[Song] = [
 		Chord.new("F", 6),
 		Chord.new("G", 6),
 		Chord.new("C", 6),
-	]), # ~78s
+	]), # ~84s
 
 	Song.new(2, [
+		Chord.new("C", 5),
 		Chord.new("Am", 5),
 		Chord.new("C", 5),
 		Chord.new("F", 5),
@@ -155,5 +160,5 @@ var SONGS : Array[Song] = [
 		Chord.new("C", 5),
 		Chord.new("G", 5),
 		Chord.new("C", 5),
-	]), # ~85s
+	]), # ~90s
 ]
