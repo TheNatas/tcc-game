@@ -1,23 +1,30 @@
 extends Node2D
 
-@onready var player = get_tree().get_first_node_in_group("player") # make sure player is in group "player"
+@onready var player = get_tree().get_first_node_in_group("player")
 
 const TOTAL_DEGREES := 7
 const DEGREE_HEIGHT := 60
 const DEGREE_GAP := 20
 const DEGREE_WIDTH_PERCENT := 0.8
 
-var degree_scene := preload("res://scripts/modules/degrees/degree.gd") # The script, not a scene – we’ll create the node manually
+var degree_script := preload("res://scripts/modules/degrees/degree.gd")
 
 func _ready():
+	var viewport_size = get_viewport_rect().size
+	
+	# Calculate total height of all degrees including gaps
+	var total_height = TOTAL_DEGREES * DEGREE_HEIGHT + (TOTAL_DEGREES - 1) * DEGREE_GAP
+	# Starting Y so that everything is vertically centered
+	var start_y = (viewport_size.y - total_height) / 2
+
 	for i in range(TOTAL_DEGREES):
 		var degree = Area2D.new()
 		degree.name = "degree%d" % i
 		degree.position = Vector2(
-			(1.0 - DEGREE_WIDTH_PERCENT) * 0.5 * get_viewport_rect().size.x,
-			i * (DEGREE_HEIGHT + DEGREE_GAP)
+			(1.0 - DEGREE_WIDTH_PERCENT) * 0.5 * viewport_size.x,
+			start_y + i * (DEGREE_HEIGHT + DEGREE_GAP)
 		)
-		degree.set_script(degree_scene)
+		degree.set_script(degree_script)
 		degree.add_to_group(degree.name)
 		
 		# Connect signals
@@ -29,7 +36,7 @@ func _ready():
 		# Create ColorRect
 		var rect = ColorRect.new()
 		rect.color = Color(1, 1, 1, 0.196)
-		rect.size = Vector2(get_viewport_rect().size.x * DEGREE_WIDTH_PERCENT, DEGREE_HEIGHT)
+		rect.size = Vector2(viewport_size.x * DEGREE_WIDTH_PERCENT, DEGREE_HEIGHT)
 		rect.anchor_right = 0
 		rect.anchor_bottom = 0
 		rect.add_to_group(degree.name + '/ColorRect')
@@ -50,10 +57,5 @@ func _ready():
 		collision.position = rect.size / 2
 		collision.add_to_group(degree.name + '/collision')
 		degree.add_child(collision)
-		
-		# Reposition the player accordingly to the degrees
-		if i == 0:
-			player.position.x = degree.position.x
-
 
 		add_child(degree)
