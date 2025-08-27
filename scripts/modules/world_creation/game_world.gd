@@ -3,12 +3,14 @@ extends Node2D
 @onready var map = $map
 @onready var player = $player
 @onready var collision = $CollisionShape2D
+@onready var feedback = $feedback
 
 @onready var levels_data = preload("res://scripts/modules/levels/levels.gd").new()
 
 func _ready():
 	resize_map_to_screen()
 	render_player()
+	#render_feedback()
 
 func resize_map_to_screen():
 	var screen_size = get_viewport_rect().size
@@ -32,7 +34,6 @@ func resize_map_to_screen():
 	# 5. Optional: center the sprite
 	map.position = screen_size / 2
 
-# Example in a scene or script where you want to create the player
 func render_player():
 	player.name = "player"
 	player.scale = Vector2(0.359, 0.359)
