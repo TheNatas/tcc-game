@@ -47,7 +47,6 @@ func render_player():
 	var collision = CollisionShape2D.new()
 	if sprite.texture:
 		var tex_size = sprite.texture.get_size()
-		print(tex_size)
 		var rect_shape = RectangleShape2D.new()
 		rect_shape.extents = tex_size / 2.0   # half because extents = half-size
 		collision.shape = rect_shape

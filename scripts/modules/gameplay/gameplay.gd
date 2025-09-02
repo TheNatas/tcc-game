@@ -1,6 +1,6 @@
 extends Node2D
 
-var TIME_TO_WAIT_FOR_PLAYER_REACTION = 5.0 if Globals.current_level == 0 else 3.0 if Globals.current_level == 1 else 2.0
+var TIME_TO_WAIT_FOR_PLAYER_REACTION = 5.0 if Globals.current_level == 0 else 4.0 if Globals.current_level == 1 else 3.0
 const MAX_NUMBER_OF_NOTES_SWITCHES_PER_LEVEL = 2
 const MIN_RIGHT_NOTES_PERCENT_TO_ADVANCE = 70
 
@@ -16,7 +16,6 @@ signal feedback_status_changed(new_feedback_status: String)
 
 func _ready():
 	connect("feedback_status_changed", Callable(feedback_scene, &"_on_gameplay_feedback_status_changed"))
-	print("current level: ", Globals.current_level)
 	start_next_level()
 
 func start_next_level():
@@ -31,7 +30,6 @@ func highlight_degree(degree_index: int, color_to_paint: Color) -> void:
 	
 func finish_level() -> void:
 	var right_notes_percent = (float(Levels.right_notes_on_current_level) / MAX_NUMBER_OF_NOTES_SWITCHES_PER_LEVEL) * 100
-	print("right_notes_percent: ", right_notes_percent)
 	await get_tree().create_timer(2.0).timeout
 	game_world.visible = false
 	sound.playing = false

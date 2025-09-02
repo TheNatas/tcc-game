@@ -34,7 +34,7 @@ layout_mode = 3
 anchors_preset = 0
 script = ExtResource("6_hbo4f")
 
-[node name="sound" type="AudioStreamPlayer2D" parent="."]
+[node name="sound" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("7_407ns")
 autoplay = true
 script = ExtResource("8_w3w6i")

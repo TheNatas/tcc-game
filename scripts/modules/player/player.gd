@@ -43,7 +43,6 @@ func _update_current_degree() -> void:
 		var degree_rect: Rect2 = _get_shape_rect(degree_shape)
 
 		var overlap: Rect2 = player_rect.intersection(degree_rect)
-		print("Degree ", degree_index, " overlap: ", overlap.size)
 		if overlap.has_area():
 			var area: float = overlap.size.x * overlap.size.y
 			#if area > max_overlap:

@@ -57,5 +57,4 @@ func _on_start_game_pressed() -> void:
 
 
 func _on_exit_pressed() -> void:
-	print("Exit pressed!")
 	get_tree().quit()
