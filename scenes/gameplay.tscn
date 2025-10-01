@@ -1,10 +1,9 @@
-[gd_scene load_steps=11 format=3 uid="uid://buvvue75y5pef"]
+[gd_scene load_steps=10 format=3 uid="uid://buvvue75y5pef"]
 
 [ext_resource type="Script" uid="uid://pdg4qkfr7pgp" path="res://scripts/modules/gameplay/gameplay.gd" id="1_hbo4f"]
 [ext_resource type="Script" uid="uid://byjjw4ax2t38a" path="res://scripts/modules/world_creation/game_world.gd" id="2_qixtg"]
 [ext_resource type="Script" uid="uid://cacregnk8ukd0" path="res://scripts/modules/world_creation/map.gd" id="3_qixtg"]
 [ext_resource type="Script" uid="uid://6f7ms72m5b4c" path="res://scripts/modules/player/player.gd" id="4_nt65e"]
-[ext_resource type="Script" uid="uid://dwh76xht1krmp" path="res://scripts/modules/feedback.gd" id="6_hbo4f"]
 [ext_resource type="Script" uid="uid://de81su8spsb4g" path="res://scripts/modules/degrees/degrees.gd" id="6_s5y6v"]
 [ext_resource type="AudioStream" uid="uid://cmw4mlk7m1x5j" path="res://assets/Mixdown.wav" id="7_407ns"]
 [ext_resource type="Script" uid="uid://27mn64jg3ksr" path="res://scripts/modules/sound/sound.gd" id="8_w3w6i"]
@@ -28,11 +27,6 @@ script = ExtResource("4_nt65e")
 
 [node name="degrees" type="Node2D" parent="GameWorld"]
 script = ExtResource("6_s5y6v")
-
-[node name="feedback" type="Control" parent="GameWorld"]
-layout_mode = 3
-anchors_preset = 0
-script = ExtResource("6_hbo4f")
 
 [node name="sound" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("7_407ns")

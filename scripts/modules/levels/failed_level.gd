@@ -1,12 +1,9 @@
 extends Control
 
-var dialog_lines = [
-	"I...I...think I'm losing my talent.",
-	"I think it's time for accepting my fate. I should retire.",
-	"...",
-	"No! I can't! If I could just try it once again...",
-	"...!",
-	"What?! WOAHHH"
+var dialog_lines : Array[DialogLine] = [
+	DialogLine.new("Eu... eu acho que perdi meu talento...", "Detetive Sonora"),
+	DialogLine.new("Não! Isso não é possível.", "Detetive Sonora"),
+	DialogLine.new("Preciso tentar novamente. E dessa vez, até conseguir...", "Detetive Sonora"),
 ]
 
 var current_line = 0
@@ -26,7 +23,8 @@ func _input(event):
 func _on_button_pressed():
 	current_line += 1
 	if current_line < dialog_lines.size():
-		label.text = dialog_lines[current_line]
+		var line_obj = dialog_lines[current_line]
+		label.text = line_obj.speaker + ": " + line_obj.line if !line_obj.speaker.is_empty() else line_obj.line
 	else:
 		get_tree().change_scene_to_file("res://scenes/gameplay.tscn")
 
@@ -69,7 +67,8 @@ func create_ui_elements():
 
 	# === 3. Dialog Label ===
 	label = Label.new()
-	label.text = dialog_lines[current_line]
+	var line_obj = dialog_lines[current_line]
+	label.text = line_obj.speaker + ": " + line_obj.line if !line_obj.speaker.is_empty() else line_obj.line
 	label.autowrap_mode = TextServer.AUTOWRAP_WORD
 	label.size_flags_horizontal = Control.SIZE_EXPAND_FILL
 	label.size_flags_vertical = Control.SIZE_EXPAND_FILL

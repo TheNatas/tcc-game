@@ -8,14 +8,10 @@ var player_current_degree := Globals.STARTING_DEGREE
 
 signal feedback_status_changed(new_feedback_status: String)
 
-@onready var feedback_scene = get_tree().get_first_node_in_group("feedback")
-@onready var dialog_box = $Feedback
 @onready var game_world = $GameWorld
 @onready var sound = $sound
-@onready var levels_data = preload("res://scripts/modules/levels/levels.gd").new()
 
 func _ready():
-	connect("feedback_status_changed", Callable(feedback_scene, &"_on_gameplay_feedback_status_changed"))
 	start_next_level()
 
 func start_next_level():
@@ -35,7 +31,7 @@ func finish_level() -> void:
 	sound.playing = false
 	if (right_notes_percent >= MIN_RIGHT_NOTES_PERCENT_TO_ADVANCE):
 		Globals.current_level += 1
-		if Globals.current_level >= levels_data.levels.size():
+		if Globals.current_level >= Levels.number_of_levels:
 			get_tree().change_scene_to_file("res://scenes/game_finished.tscn")
 			return
 		else:
@@ -43,9 +39,6 @@ func finish_level() -> void:
 	else:
 		get_tree().change_scene_to_file("res://scenes/failed_level.tscn")
 	
-	var level = levels_data.levels[Globals.current_level]
-	dialog_box.start_dialog(level["dialog"])
-
 func _on_sound_playing_degree_changed(current_playing_degree: int) -> void:
 	Levels.notes_switches_on_current_level += 1
 	if Levels.notes_switches_on_current_level == MAX_NUMBER_OF_NOTES_SWITCHES_PER_LEVEL:

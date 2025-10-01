@@ -1,16 +1,12 @@
 extends Control
 
-var dialog_lines = [
-	"After escaping the ruins, our hero ventures into the forest...",
-	"But danger still lurks in the shadows.",
-	"Will they survive the next trial?"
-]
-
 var current_line = 0
 
 # UI elements
 var label : Label
 var button : Button
+
+var dialog_lines : Array[DialogLine] = Levels.levels[Globals.current_level]
 
 func _ready():
 	create_ui_elements()
@@ -22,8 +18,10 @@ func _input(event):
 
 func _on_button_pressed():
 	current_line += 1
+	
 	if current_line < dialog_lines.size():
-		label.text = dialog_lines[current_line]
+		var line_obj = dialog_lines[current_line]
+		label.text = line_obj.speaker + ": " + line_obj.line if !line_obj.speaker.is_empty() else line_obj.line
 	else:
 		get_tree().change_scene_to_file("res://scenes/gameplay.tscn")
 
@@ -66,7 +64,8 @@ func create_ui_elements():
 
 	# === 3. Dialog Label ===
 	label = Label.new()
-	label.text = dialog_lines[current_line]
+	var line_obj = dialog_lines[current_line]
+	label.text = line_obj.speaker + ": " + line_obj.line if !line_obj.speaker.is_empty() else line_obj.line
 	label.autowrap_mode = TextServer.AUTOWRAP_WORD
 	label.size_flags_horizontal = Control.SIZE_EXPAND_FILL
 	label.size_flags_vertical = Control.SIZE_EXPAND_FILL
