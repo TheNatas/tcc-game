@@ -14,7 +14,7 @@ var first_level_dialogs : Array[DialogLine] = [
 	#DialogLine.new("*hmphf* Ainda bem que eu não sou nada tradicional...", "unknown"),
 	
 	DialogLine.new("*trtrtrtrtrtrim*", ""),
-	DialogLine.new("Quem fala?", "unknown"),
+	DialogLine.new("Quem fala?", "Desconhecido"),
 	DialogLine.new("Detetive Sonora? Estou ligando para atualizá-lo sobre a sua missão. Aquela acerca do furto de uma aeronave militar indetectável.", "Secretário"),
 	DialogLine.new("Indetectável para vocês...", "Detetive Sonora"),
 	DialogLine.new("Certo... nós confirmamos o que o senhor disse. A nave roubada realmente deixa rastros sonoros, o senhor estava certo.", "Secretário"),

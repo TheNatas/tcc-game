@@ -105,7 +105,7 @@ func create_ui_elements():
 
 	# === 4. Continue Button ===
 	button = Button.new()
-	button.text = "Continue"
+	button.text = "Continuar"
 	button.size_flags_horizontal = Control.SIZE_SHRINK_CENTER
 	button.custom_minimum_size = Vector2(150, 40)
 	button.pressed.connect(_on_button_pressed)

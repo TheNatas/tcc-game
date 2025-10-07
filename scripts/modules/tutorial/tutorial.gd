@@ -11,20 +11,20 @@ var page_indicator : Label
 # Tutorial content pages from how_to_play.md
 var tutorial_pages : Array[Dictionary] = [
 	{
-		"title": "Welcome to Sound Detective!",
-		"content": "A song starts as soon as the game begins. On screen, seven vertical lanes represent the seven scale degrees of the song's key. Your character must stand on the lane that corresponds to the chord currently playing."
+		"title": "Bem-vindo ao Sound Detective!",
+		"content": "Uma música começa assim que o jogo inicia. Na tela, sete pistas verticais representam os sete graus da escala da tonalidade da música. Seu personagem deve ficar na pista que corresponde ao acorde que está tocando."
 	},
 	{
-		"title": "Objective",
-		"content": "Match the character's position to the correct scale degree for each chord in the song.\n\nThe first chord is always the tonic (1), the 1st degree. The character always starts on degree 1 for reference."
+		"title": "Objetivo",
+		"content": "Ajuste a posição do personagem para o grau da escala correto para cada acorde da música.\n\nO primeiro acorde é sempre a tônica (1), o 1º grau. O personagem sempre começa no grau 1 como referência."
 	},
 	{
-		"title": "How It Works",
-		"content": "1. Listen: As the song plays, chords change over time.\n\n2. Identify: Each chord corresponds to a scale degree.\n\n3. Move: Shift the character up or down to the lane that matches the current chord's degree.\n\n4. Hold: Stay on the correct lane until the chord changes again, then adjust as needed."
+		"title": "Como Funciona",
+		"content": "1. Ouça: Enquanto a música toca, os acordes mudam ao longo do tempo.\n\n2. Identifique: Cada acorde corresponde a um grau da escala.\n\n3. Mova: Leve o personagem para cima ou para baixo até a pista que corresponde ao grau do acorde atual.\n\n4. Mantenha: Fique na pista correta até o acorde mudar novamente e então ajuste se necessário."
 	},
 	{
-		"title": "Movement & Tips",
-		"content": "Move the character up or down using the UP/DOWN arrow keys.\n\nYou can jump multiple lanes if the chord change skips degrees.\n\nUse the first chord (tonic) as your pitch reference.\n\nThink in relative degrees: if you hear a move from I to V, move from lane 1 to lane 5.\n\nThere is one correct lane per chord at any moment."
+		"title": "Movimento e Dicas",
+		"content": "Mova o personagem para cima ou para baixo usando as setas CIMA/BAIXO.\n\nVocê pode pular várias pistas se a mudança de acorde saltar graus.\n\nUse o primeiro acorde (tônica) como sua referência de altura.\n\nPense em graus relativos: se você ouvir uma mudança de I para V, mova da pista 1 para a pista 5.\n\nHá apenas uma pista correta para cada acorde em cada momento."
 	}
 ]
 
@@ -49,13 +49,13 @@ func update_page_content():
 	var page = tutorial_pages[current_page]
 	title_label.text = page["title"]
 	label.text = page["content"]
-	page_indicator.text = "Page %d of %d - Press ENTER or SPACE to continue" % [current_page + 1, tutorial_pages.size()]
+	page_indicator.text = "Página %d de %d - Pressione ENTER ou ESPAÇO para continuar" % [current_page + 1, tutorial_pages.size()]
 	
 	# Update button text on last page
 	if current_page == tutorial_pages.size() - 1:
-		button.text = "Start Game"
+		button.text = "Iniciar Jogo"
 	else:
-		button.text = "Continue"
+		button.text = "Continuar"
 
 func create_ui_elements():
 	# Set up the root Control node to fill the screen
@@ -125,7 +125,7 @@ func create_ui_elements():
 
 	# === 7. Page Indicator ===
 	page_indicator = Label.new()
-	page_indicator.text = "Page %d of %d - Press ENTER or SPACE to continue" % [current_page + 1, tutorial_pages.size()]
+	page_indicator.text = "Página %d de %d - Pressione ENTER ou ESPAÇO para continuar" % [current_page + 1, tutorial_pages.size()]
 	page_indicator.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
 	page_indicator.size_flags_horizontal = Control.SIZE_EXPAND_FILL
 	page_indicator.add_theme_font_size_override("font_size", 14)
@@ -133,7 +133,7 @@ func create_ui_elements():
 
 	# === 8. Continue Button ===
 	button = Button.new()
-	button.text = "Continue"
+	button.text = "Continuar"
 	button.size_flags_horizontal = Control.SIZE_SHRINK_CENTER
 	button.custom_minimum_size = Vector2(150, 40)
 	button.pressed.connect(_on_button_pressed)

@@ -33,14 +33,14 @@ func _ready() -> void:
 
 	# Start Game Button
 	start_button = Button.new()
-	start_button.text = "Start Game"
+	start_button.text = "Iniciar Jogo"
 	start_button.custom_minimum_size = Vector2(150, 40)
 	vbox.add_child(start_button)
 	start_button.connect("pressed", Callable(self, "_on_start_game_pressed"))
 
 	# Exit Button
 	exit_button = Button.new()
-	exit_button.text = "Exit"
+	exit_button.text = "Sair"
 	exit_button.custom_minimum_size = Vector2(150, 40)
 	vbox.add_child(exit_button)
 	exit_button.connect("pressed", Callable(self, "_on_exit_pressed"))

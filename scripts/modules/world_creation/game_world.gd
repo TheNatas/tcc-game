@@ -23,13 +23,13 @@ func resize_map_to_screen():
 	var texture_size = map_texture.get_size()
 
 	# 3. Compute scale factor that maintains aspect ratio and fills the screen
-	var scale = max(
+	var scale_factor = max(
 		screen_size.x / texture_size.x,
 		screen_size.y / texture_size.y
 	)
 
 	# 4. Apply scale uniformly to avoid stretching
-	map.scale = Vector2(scale, scale)
+	map.scale = Vector2(scale_factor, scale_factor)
 
 	# 5. Optional: center the sprite
 	map.position = screen_size / 2
@@ -44,15 +44,15 @@ func render_player():
 	player.add_child(sprite)
 
 	# --- CollisionShape2D ---
-	var collision = CollisionShape2D.new()
+	var collision_shape = CollisionShape2D.new()
 	if sprite.texture:
 		var tex_size = sprite.texture.get_size()
 		var rect_shape = RectangleShape2D.new()
 		rect_shape.extents = tex_size / 2.0   # half because extents = half-size
-		collision.shape = rect_shape
+		collision_shape.shape = rect_shape
 
-	collision.add_to_group("player/collision")
-	player.add_child(collision)
+	collision_shape.add_to_group("player/collision")
+	player.add_child(collision_shape)
 
 	# --- TextBalloon (Node2D or Control type) ---
 	var text_balloon = Node2D.new() # Or your custom TextBalloon scene
@@ -61,7 +61,7 @@ func render_player():
 
 	# Add a label to the balloon
 	var label = Label.new()
-	label.text = "Hello!"
+	label.text = "Olá!"
 	text_balloon.add_child(label)
 
 	player.add_child(text_balloon)
@@ -69,10 +69,10 @@ func render_player():
 	# Finally, add the player to the scene
 	add_child(player)
 	
-	var tex_size = sprite.texture.get_size()
-	var final_size = tex_size * sprite.scale
-	var collision_size = collision.shape.extents * 2
+	var sprite_tex_size = sprite.texture.get_size()
+	var _final_size = sprite_tex_size * sprite.scale
+	var _collision_size = collision_shape.shape.extents * 2
 	
-	var rect = collision.shape.extents * 2
-	draw_rect(Rect2(-collision.shape.extents, rect), Color(1, 0, 0, 0.3), true)
-	draw_rect(Rect2(-collision.shape.extents, rect), Color(1, 0, 0), false)
+	var rect = collision_shape.shape.extents * 2
+	draw_rect(Rect2(-collision_shape.shape.extents, rect), Color(1, 0, 0, 0.3), true)
+	draw_rect(Rect2(-collision_shape.shape.extents, rect), Color(1, 0, 0), false)
