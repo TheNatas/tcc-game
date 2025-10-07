@@ -3,6 +3,7 @@ extends Node2D
 const STARTING_DEGREE = 3
 
 var current_level = 0
+var tutorial_shown = false
 
 var SONGS : Array[Song] = [
 	# ----------------

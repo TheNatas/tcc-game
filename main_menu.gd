@@ -53,6 +53,7 @@ func _on_start_game_pressed() -> void:
 	var is_game_finished = Globals.current_level == 3
 	if is_game_finished:
 		Globals.current_level = 0 # reset game
+		Globals.tutorial_shown = false # reset tutorial flag
 	get_tree().change_scene_to_file("res://scenes/context.tscn")
 
 

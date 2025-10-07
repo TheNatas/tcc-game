@@ -23,7 +23,12 @@ func _on_button_pressed():
 		var line_obj = dialog_lines[current_line]
 		label.text = line_obj.speaker + ": " + line_obj.line if !line_obj.speaker.is_empty() else line_obj.line
 	else:
-		get_tree().change_scene_to_file("res://scenes/gameplay.tscn")
+		# Check if this is the first level and tutorial hasn't been shown yet
+		if Globals.current_level == 0 and not Globals.tutorial_shown:
+			Globals.tutorial_shown = true
+			get_tree().change_scene_to_file("res://scenes/tutorial.tscn")
+		else:
+			get_tree().change_scene_to_file("res://scenes/gameplay.tscn")
 
 func create_ui_elements():
 	# Set up the root Control node to fill the screen
