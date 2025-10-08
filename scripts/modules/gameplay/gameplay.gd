@@ -32,7 +32,9 @@ func finish_level() -> void:
 	if (right_notes_percent >= MIN_RIGHT_NOTES_PERCENT_TO_ADVANCE):
 		Globals.current_level += 1
 		if Globals.current_level >= Levels.number_of_levels:
-			get_tree().change_scene_to_file("res://scenes/game_finished.tscn")
+			# Set flag to indicate we're coming from game finished
+			Globals.from_game_finished = true
+			get_tree().change_scene_to_file("res://scenes/credits.tscn")
 			return
 		else:
 			get_tree().change_scene_to_file("res://scenes/context.tscn")

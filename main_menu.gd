@@ -1,6 +1,7 @@
 extends Control
 
 @onready var start_button: Button = null
+@onready var credits_button: Button = null
 @onready var exit_button: Button = null
 
 func _ready() -> void:
@@ -38,6 +39,13 @@ func _ready() -> void:
 	vbox.add_child(start_button)
 	start_button.connect("pressed", Callable(self, "_on_start_game_pressed"))
 
+	# Credits Button
+	credits_button = Button.new()
+	credits_button.text = "Créditos"
+	credits_button.custom_minimum_size = Vector2(150, 40)
+	vbox.add_child(credits_button)
+	credits_button.connect("pressed", Callable(self, "_on_credits_pressed"))
+
 	# Exit Button
 	exit_button = Button.new()
 	exit_button.text = "Sair"
@@ -55,6 +63,11 @@ func _on_start_game_pressed() -> void:
 		Globals.current_level = 0 # reset game
 		Globals.tutorial_shown = false # reset tutorial flag
 	get_tree().change_scene_to_file("res://scenes/context.tscn")
+
+
+func _on_credits_pressed() -> void:
+	Globals.from_game_finished = false
+	get_tree().change_scene_to_file("res://scenes/credits.tscn")
 
 
 func _on_exit_pressed() -> void:

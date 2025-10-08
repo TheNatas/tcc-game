@@ -5,6 +5,8 @@ const STARTING_DEGREE = 3
 var current_level = 0
 var tutorial_shown = false
 
+var from_game_finished = false
+
 var SONGS : Array[Song] = [
 	# ----------------
 	# Beginner (level 0) – slow, simple chords
