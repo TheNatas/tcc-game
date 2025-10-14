@@ -40,7 +40,7 @@ func render_player():
 
 	# --- Sprite2D ---
 	var sprite = Sprite2D.new()
-	sprite.texture = preload("res://assets/player4.png")
+	sprite.texture = preload("res://assets/player5.png")
 	player.add_child(sprite)
 
 	# --- CollisionShape2D ---
