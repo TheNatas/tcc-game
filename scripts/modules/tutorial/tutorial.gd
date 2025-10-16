@@ -15,14 +15,14 @@ var tutorial_pages : Array[Dictionary] = [
 	{
 		"title": "Bem-vindo ao Sound Detective!",
 		"content": "Uma música começa assim que o jogo inicia. Na tela, sete pistas verticais representam os sete graus da escala da tonalidade da música. Seu personagem deve ficar na pista que corresponde ao acorde que está tocando.",
-		"media": "res://assets/gameplay samples/gameplay sample 1.png",
+		"media": "res://assets/gameplay samples/resized gameplay sample 1.png",
 		"media_type": "image",
 		"layout": "vertical"  # Image below text
 	},
 	{
 		"title": "Objetivo",
 		"content": "Ajuste a posição do personagem para o grau da escala correto para cada acorde da música.\n\nO primeiro acorde é sempre a tônica (1), o 1º grau. O personagem sempre começa no grau 1 como referência.",
-		"media": "res://assets/gameplay samples/gameplay sample 2.png",
+		"media": "res://assets/gameplay samples/resized gameplay sample 2.png",
 		"media_type": "image",
 		"layout": "horizontal"  # Image to the right
 	},
@@ -36,9 +36,9 @@ var tutorial_pages : Array[Dictionary] = [
 	{
 		"title": "Movimento e Dicas",
 		"content": "Mova o personagem para cima ou para baixo usando as setas CIMA/BAIXO.\n\nVocê pode pular várias pistas se a mudança de acorde saltar graus.\n\nUse o primeiro acorde (tônica) como sua referência de altura.\n\nPense em graus relativos: se você ouvir uma mudança de I para V, mova da pista 1 para a pista 5.\n\nHá apenas uma pista correta para cada acorde em cada momento.",
-		"media": "",  # No media for this page
-		"media_type": "none",
-		"layout": "vertical"
+		"media": "res://assets/updownkeys.png",
+		"media_type": "image",
+		"layout": "horizontal"
 	}
 ]
 
@@ -173,13 +173,14 @@ func create_content_layout(page: Dictionary) -> Control:
 		hbox.set("theme_override_constants/separation", 30)
 		hbox.size_flags_horizontal = Control.SIZE_EXPAND_FILL
 		hbox.size_flags_vertical = Control.SIZE_EXPAND_FILL
+		hbox.alignment = BoxContainer.ALIGNMENT_CENTER  # Center items vertically
 		
 		# Text label on the left
 		label = Label.new()
 		label.text = page["content"]
 		label.autowrap_mode = TextServer.AUTOWRAP_WORD
 		label.size_flags_horizontal = Control.SIZE_EXPAND_FILL
-		label.size_flags_vertical = Control.SIZE_EXPAND_FILL
+		label.size_flags_vertical = Control.SIZE_SHRINK_CENTER
 		label.custom_minimum_size = Vector2(300, 0)
 		label.add_theme_font_size_override("font_size", 18)
 		hbox.add_child(label)
@@ -194,7 +195,7 @@ func create_content_layout(page: Dictionary) -> Control:
 				video_player.loop = true
 				video_player.volume_db = -80  # Mute the video
 				video_player.size_flags_horizontal = Control.SIZE_EXPAND_FILL
-				video_player.size_flags_vertical = Control.SIZE_EXPAND_FILL
+				video_player.size_flags_vertical = Control.SIZE_FILL
 				video_player.custom_minimum_size = Vector2(350, 250)
 				video_player.expand = true
 				media_display = video_player
@@ -207,7 +208,7 @@ func create_content_layout(page: Dictionary) -> Control:
 				error_label.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
 				error_label.vertical_alignment = VERTICAL_ALIGNMENT_CENTER
 				error_label.size_flags_horizontal = Control.SIZE_EXPAND_FILL
-				error_label.size_flags_vertical = Control.SIZE_EXPAND_FILL
+				error_label.size_flags_vertical = Control.SIZE_FILL
 				error_label.custom_minimum_size = Vector2(350, 250)
 				media_display = error_label
 				hbox.add_child(error_label)
@@ -215,7 +216,7 @@ func create_content_layout(page: Dictionary) -> Control:
 			var texture_rect = TextureRect.new()
 			texture_rect.stretch_mode = TextureRect.STRETCH_KEEP_ASPECT
 			texture_rect.size_flags_horizontal = Control.SIZE_EXPAND_FILL
-			texture_rect.size_flags_vertical = Control.SIZE_EXPAND_FILL
+			texture_rect.size_flags_vertical = Control.SIZE_FILL
 			texture_rect.custom_minimum_size = Vector2(350, 250)
 			var texture = load(page["media"])
 			if texture:
