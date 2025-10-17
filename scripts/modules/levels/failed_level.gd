@@ -17,7 +17,7 @@ func _ready():
 	button.pressed.connect(_on_button_pressed)
 	
 func _input(event):
-	if event.is_action_pressed("ui_accept"): # "ui_accept" is Enter/Space by default
+	if event.is_action_pressed("confirm"):
 		_on_button_pressed()
 
 func _on_button_pressed():

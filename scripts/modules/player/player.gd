@@ -9,9 +9,9 @@ var current_degree = Globals.STARTING_DEGREE
 var overlapping_degrees: Array = []
 
 func _process(delta: float) -> void:
-	if Input.is_action_pressed("ui_up"):
+	if Input.is_action_pressed("move_up"):
 		position.y -= speed * delta
-	elif Input.is_action_pressed("ui_down"):
+	elif Input.is_action_pressed("move_down"):
 		position.y += speed * delta
 	_update_current_degree()
 

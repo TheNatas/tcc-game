@@ -57,6 +57,17 @@ func _ready() -> void:
 	start_button.grab_focus()
 
 
+func _input(event: InputEvent) -> void:
+	if event.is_action_pressed("confirm"):
+		# Check which button has focus and press it
+		if start_button.has_focus():
+			_on_start_game_pressed()
+		elif credits_button.has_focus():
+			_on_credits_pressed()
+		elif exit_button.has_focus():
+			_on_exit_pressed()
+
+
 func _on_start_game_pressed() -> void:
 	var is_game_finished = Globals.current_level == 3
 	if is_game_finished:

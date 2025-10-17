@@ -133,6 +133,15 @@ func _ready() -> void:
 		continue_button.grab_focus()
 
 
+func _input(event: InputEvent) -> void:
+	if event.is_action_pressed("confirm"):
+		# Check which button has focus and press it
+		if back_button != null and back_button.has_focus():
+			_on_back_pressed()
+		elif continue_button != null and continue_button.has_focus():
+			_on_continue_pressed()
+
+
 func _on_back_pressed() -> void:
 	get_tree().change_scene_to_file("res://scenes/main_menu.tscn")
 

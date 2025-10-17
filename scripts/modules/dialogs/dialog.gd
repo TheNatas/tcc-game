@@ -15,7 +15,7 @@ func start_dialog(lines: Array):
 	show()
 
 func _unhandled_input(event):
-	if event.is_action_pressed("ui_accept"):
+	if event.is_action_pressed("confirm"):
 		current_line += 1
 		if current_line >= dialog_lines.size():
 			hide()
