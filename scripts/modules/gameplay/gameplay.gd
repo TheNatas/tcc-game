@@ -1,10 +1,10 @@
 extends Node2D
 
 var TIME_TO_WAIT_FOR_PLAYER_REACTION = 5.0 if Globals.current_level == 0 else 4.0 if Globals.current_level == 1 else 3.0
-const MAX_NUMBER_OF_NOTES_SWITCHES_PER_LEVEL = 2
 const MIN_RIGHT_NOTES_PERCENT_TO_ADVANCE = 70
 
 var player_current_degree := Globals.STARTING_DEGREE
+var total_chords_in_song := 0  # Will be set when the song starts
 
 signal feedback_status_changed(new_feedback_status: String)
 
@@ -17,6 +17,11 @@ var feedback_label: Label
 
 func _ready():
 	create_feedback_ui()
+	# Connect to sound's song_finished signal
+	sound.connect("song_finished", Callable(self, "_on_song_finished"))
+	# Get total chords from the current song (which was selected in sound.gd)
+	await get_tree().create_timer(0.1).timeout  # Wait for sound to initialize
+	total_chords_in_song = sound.current_song.chords.size()
 	start_next_level()
 
 func create_feedback_ui():
@@ -108,7 +113,7 @@ func highlight_degree(degree_index: int, color_to_paint: Color) -> void:
 	degree_color_node.color = Color(0, 0, 0, 0.196)
 	
 func finish_level() -> void:
-	var right_notes_percent = (float(Levels.right_notes_on_current_level) / MAX_NUMBER_OF_NOTES_SWITCHES_PER_LEVEL) * 100
+	var right_notes_percent = (float(Levels.right_notes_on_current_level) / total_chords_in_song) * 100
 	await get_tree().create_timer(2.0).timeout
 	game_world.visible = false
 	sound.playing = false
@@ -128,10 +133,7 @@ func _on_sound_playing_degree_changed(current_playing_degree: int) -> void:
 	print("=== _on_sound_playing_degree_changed called ===")
 	print("current_playing_degree: ", current_playing_degree)
 	Levels.notes_switches_on_current_level += 1
-	if Levels.notes_switches_on_current_level == MAX_NUMBER_OF_NOTES_SWITCHES_PER_LEVEL:
-		await get_tree().create_timer(TIME_TO_WAIT_FOR_PLAYER_REACTION).timeout
-		finish_level()
-		return
+	
 	await get_tree().create_timer(TIME_TO_WAIT_FOR_PLAYER_REACTION).timeout
 	var player = get_tree().get_first_node_in_group("player")
 	player_current_degree = player.current_degree
@@ -148,3 +150,7 @@ func _on_sound_playing_degree_changed(current_playing_degree: int) -> void:
 		show_feedback("Grau errado, chefe", 2.0)
 		highlight_degree(player_current_degree, Color(1,0,0))
 		highlight_degree(current_playing_degree, Color(0,1,0))
+
+func _on_song_finished() -> void:
+	print("=== Song finished! Ending level ===")
+	finish_level()

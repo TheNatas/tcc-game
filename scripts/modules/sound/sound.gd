@@ -3,6 +3,7 @@ extends AudioStreamPlayer
 @onready var gameplay_scene = get_tree().get_first_node_in_group("gameplay_scene")
 
 signal playing_degree_changed(current_playing_degree: int)
+signal song_finished()
 
 const SOUNDS = {
 	"piano": {
@@ -81,8 +82,8 @@ func _ready():
 	#var song_index = rng.randi_range(0, SONGS.size())
 	#var current_song = Globals.SONGS[Globals.current_level]
 	var songs_of_current_level = Globals.SONGS.filter(func(s): return s.level == Globals.current_level)
-	var current_song = songs_of_current_level.pick_random()
-	start_song(current_song)
+	var selected_song = songs_of_current_level.pick_random()
+	start_song(selected_song)
 	
 func start_song(song: Song):
 	var first_chord = song.chords[0];
@@ -109,6 +110,11 @@ func get_next_chord_in_song(song: Song, current_chord_index_in_song: int):
 	return next_chord;
 	
 func update_chord_in_song():
+	# Check if we've reached the end of the song
+	if current_chord_index_in_the_song >= current_song.chords.size() - 1:
+		emit_signal("song_finished")
+		return
+	
 	var next_chord = get_next_chord_in_song(current_song, current_chord_index_in_the_song)
 	play_chord(next_chord)
 	current_chord_index_in_the_song += 1
