@@ -32,7 +32,7 @@ const PIANO_CHORDS = {
 # Tutorial content pages from how_to_play.md
 var tutorial_pages : Array[Dictionary] = [
 	{
-		"title": "Bem-vindo ao Sound Detective!",
+		"title": "Bem-vindo a Detetive Sonora!",
 		"content": "Uma música começa assim que o jogo inicia. Na tela, sete pistas verticais representam os sete graus da escala da tonalidade da música. Seu personagem deve ficar na pista que corresponde ao acorde que está tocando.",
 		"media": "res://assets/gameplay samples/resized gameplay sample 1.png",
 		"media_type": "image",
