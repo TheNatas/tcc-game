@@ -5,6 +5,9 @@ extends Control
 @onready var exit_button: Button = null
 
 func _ready() -> void:
+	# Start playing the menu music
+	MusicManager.play_menu_music()
+	
 	# Make this root control fill the window
 	anchor_left = 0.0
 	anchor_top = 0.0
@@ -74,6 +77,8 @@ func _on_start_game_pressed() -> void:
 	if is_game_finished:
 		Globals.current_level = 0 # reset game
 		Globals.tutorial_shown = false # reset tutorial flag
+	# Stop the menu music when starting the game
+	MusicManager.stop_menu_music()
 	get_tree().change_scene_to_file("res://scenes/context.tscn")
 
 
@@ -84,3 +89,4 @@ func _on_credits_pressed() -> void:
 
 func _on_exit_pressed() -> void:
 	get_tree().quit()
+
