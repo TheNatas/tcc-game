@@ -99,17 +99,19 @@ func _ready() -> void:
 	composer.add_theme_font_size_override("font_size", 16)
 	vbox.add_child(composer)
 
-	# Create a button container at the bottom
+	# Create a container for the button at the bottom
+	var bottom_container := CenterContainer.new()
+	bottom_container.anchor_left = 0.0
+	bottom_container.anchor_top = 0.85
+	bottom_container.anchor_right = 1.0
+	bottom_container.anchor_bottom = 1.0
+	add_child(bottom_container)
+
+	# Create a button container
 	var button_container := HBoxContainer.new()
-	button_container.anchor_left = 0.5
-	button_container.anchor_top = 0.9
-	button_container.anchor_right = 0.5
-	button_container.anchor_bottom = 0.9
-	button_container.grow_horizontal = Control.GROW_DIRECTION_BOTH
 	button_container.alignment = BoxContainer.ALIGNMENT_CENTER
 	button_container.add_theme_constant_override("separation", 20)
-	button_container.set_position(Vector2(-100, 0))
-	add_child(button_container)
+	bottom_container.add_child(button_container)
 
 	# Get info if we came from game_finished scene
 	came_from_game_finished = Globals.from_game_finished
