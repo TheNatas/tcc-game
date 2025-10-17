@@ -10,6 +10,25 @@ var page_indicator : Label
 var content_container : Control  # Will hold either VBox or HBox depending on layout
 var media_display : Control  # Can be TextureRect or VideoStreamPlayer
 
+# Interactive chord demo variables
+var chord_demo_active = false
+var current_chord_index = 0
+var chord_demo_timer = 0.0
+var chord_demo_interval = 3.0  # 2 seconds per chord
+var audio_player : AudioStreamPlayer = null
+var degree_display_label : Label = null
+
+# Piano chords for C major scale
+const PIANO_CHORDS = {
+	0: {"name": "C (Tônica)", "degree": 1, "sound": preload("res://assets/piano/C.wav")},
+	1: {"name": "Dm", "degree": 2, "sound": preload("res://assets/piano/Dm.wav")},
+	2: {"name": "Em", "degree": 3, "sound": preload("res://assets/piano/Em.wav")},
+	3: {"name": "F", "degree": 4, "sound": preload("res://assets/piano/F.wav")},
+	4: {"name": "G", "degree": 5, "sound": preload("res://assets/piano/G.wav")},
+	5: {"name": "Am", "degree": 6, "sound": preload("res://assets/piano/Am.wav")},
+	6: {"name": "Bm", "degree": 7, "sound": preload("res://assets/piano/Bm.wav")},
+}
+
 # Tutorial content pages from how_to_play.md
 var tutorial_pages : Array[Dictionary] = [
 	{
@@ -34,6 +53,13 @@ var tutorial_pages : Array[Dictionary] = [
 		"layout": "horizontal"  # Video to the right
 	},
 	{
+		"title": "Exemplo Prático",
+		"content": "Aqui vai um exemplo prático dos acordes dentro de um tom com os graus equivalentes descritos, iniciando do acorde de referência (tônica).",
+		"media": "",
+		"media_type": "interactive",
+		"layout": "interactive"  # Special layout for interactive chord demo
+	},
+	{
 		"title": "Movimento e Dicas",
 		"content": "Mova o personagem para cima ou para baixo usando as setas CIMA/BAIXO.\n\nVocê pode pular várias pistas se a mudança de acorde saltar graus.\n\nUse o primeiro acorde (tônica) como sua referência de altura.\n\nPense em graus relativos: se você ouvir uma mudança de I para V, mova da pista 1 para a pista 5.\n\nHá apenas uma pista correta para cada acorde em cada momento.",
 		"media": "res://assets/updownkeys.png",
@@ -43,21 +69,65 @@ var tutorial_pages : Array[Dictionary] = [
 ]
 
 func _ready():
+	# Create audio player for chord demo
+	audio_player = AudioStreamPlayer.new()
+	add_child(audio_player)
+	
 	create_ui_elements()
 	button.pressed.connect(_on_button_pressed)
+
+func _process(delta):
+	if chord_demo_active:
+		chord_demo_timer += delta
+		if chord_demo_timer >= chord_demo_interval:
+			chord_demo_timer = 0.0
+			current_chord_index += 1
+			
+			if current_chord_index < PIANO_CHORDS.size():
+				play_chord_demo(current_chord_index)
+			else:
+				# Reset and loop
+				current_chord_index = 0
+				play_chord_demo(current_chord_index)
 	
 func _input(event):
 	if event.is_action_pressed("confirm"):
 		_on_button_pressed()
 
+func play_chord_demo(index: int):
+	if PIANO_CHORDS.has(index) and audio_player:
+		var chord_data = PIANO_CHORDS[index]
+		audio_player.stream = chord_data["sound"]
+		audio_player.play()
+		
+		if degree_display_label:
+			degree_display_label.text = "Grau: %d\nAcorde: %s" % [chord_data["degree"], chord_data["name"]]
+
 func _on_button_pressed():
+	# Stop chord demo if it's active
+	if chord_demo_active:
+		chord_demo_active = false
+		current_chord_index = 0
+		chord_demo_timer = 0.0
+		if audio_player:
+			audio_player.stop()
+	
 	current_page += 1
 	
 	if current_page < tutorial_pages.size():
 		# Recreate UI for new page (since layout may change)
 		for child in get_children():
-			child.queue_free()
+			if child != audio_player:  # Don't remove the audio player
+				child.queue_free()
 		create_ui_elements()
+		
+		# Start chord demo if this is the interactive page
+		var page = tutorial_pages[current_page]
+		if page.get("layout") == "interactive":
+			chord_demo_active = true
+			current_chord_index = 0
+			chord_demo_timer = 0.0
+			play_chord_demo(0)
 	else:
 		# Tutorial finished, go to gameplay
 		get_tree().change_scene_to_file("res://scenes/gameplay.tscn")
@@ -166,6 +236,44 @@ func create_content_layout(page: Dictionary) -> Control:
 	var layout = page.get("layout", "vertical")
 	var has_media = page.has("media") and page["media"] != ""
 	var media_type = page.get("media_type", "none")
+	
+	# Handle interactive chord demo layout
+	if layout == "interactive":
+		var vbox_interactive = VBoxContainer.new()
+		vbox_interactive.set("theme_override_constants/separation", 30)
+		vbox_interactive.size_flags_horizontal = Control.SIZE_EXPAND_FILL
+		vbox_interactive.size_flags_vertical = Control.SIZE_EXPAND_FILL
+		vbox_interactive.alignment = BoxContainer.ALIGNMENT_CENTER
+		
+		# Text label
+		label = Label.new()
+		label.text = page["content"]
+		label.autowrap_mode = TextServer.AUTOWRAP_WORD
+		label.size_flags_horizontal = Control.SIZE_EXPAND_FILL
+		label.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
+		label.add_theme_font_size_override("font_size", 18)
+		vbox_interactive.add_child(label)
+		
+		# Degree display (large text showing current degree and chord)
+		degree_display_label = Label.new()
+		degree_display_label.text = "Grau: 1\nAcorde: C (Tônica)"
+		degree_display_label.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
+		degree_display_label.vertical_alignment = VERTICAL_ALIGNMENT_CENTER
+		degree_display_label.add_theme_font_size_override("font_size", 48)
+		degree_display_label.custom_minimum_size = Vector2(400, 200)
+		degree_display_label.size_flags_horizontal = Control.SIZE_SHRINK_CENTER
+		vbox_interactive.add_child(degree_display_label)
+		
+		# Info label
+		var info_label = Label.new()
+		info_label.text = "Os acordes tocarão automaticamente, um a cada %d segundos." % int(chord_demo_interval)
+		info_label.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
+		info_label.add_theme_font_size_override("font_size", 14)
+		info_label.modulate = Color(0.8, 0.8, 0.8)
+		vbox_interactive.add_child(info_label)
+		
+		media_display = degree_display_label
+		return vbox_interactive
 	
 	if layout == "horizontal" and has_media:
 		# Horizontal layout: text on left, media on right
