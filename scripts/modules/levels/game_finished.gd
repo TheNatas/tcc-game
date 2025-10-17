@@ -54,7 +54,7 @@ func _on_button_pressed():
 		var line_obj = dialog_lines[current_line]
 		label.text = line_obj.speaker + ": " + line_obj.line if !line_obj.speaker.is_empty() else line_obj.line
 	else:
-		get_tree().change_scene_to_file("res://scenes/main_menu.tscn")
+		get_tree().change_scene_to_file("res://scenes/credits.tscn")
 
 func create_ui_elements():
 	# Set up the root Control node to fill the screen

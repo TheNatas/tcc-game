@@ -122,7 +122,7 @@ func finish_level() -> void:
 		if Globals.current_level >= Levels.number_of_levels:
 			# Set flag to indicate we're coming from game finished
 			Globals.from_game_finished = true
-			get_tree().change_scene_to_file("res://scenes/credits.tscn")
+			get_tree().change_scene_to_file("res://scenes/game_finished.tscn")
 			return
 		else:
 			get_tree().change_scene_to_file("res://scenes/context.tscn")
