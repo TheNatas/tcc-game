@@ -105,6 +105,9 @@ func show_feedback(message: String, duration: float = 2.0):
 func start_next_level():
 	Levels.notes_switches_on_current_level = 0
 	Levels.right_notes_on_current_level = 0
+	
+	await get_tree().create_timer(.5).timeout
+	show_feedback("Ouça o acorde de referência primeiro...", 2.0)
 
 func highlight_degree(degree_index: int, color_to_paint: Color) -> void:
 	var degree_color_node = get_tree().get_first_node_in_group("degree" + str(degree_index) + "/ColorRect")

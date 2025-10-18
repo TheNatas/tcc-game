@@ -1,35 +1,22 @@
 extends Control
 
-var current_line = 0
-
 # UI elements
 var label : Label
 var button : Button
 
-var dialog_lines : Array[DialogLine] = Levels.levels[Globals.current_level]
+var dialog_text = "Seria de bom tom treinar os ouvidos antes de seguir..."
 
 func _ready():
 	create_ui_elements()
 	button.pressed.connect(_on_button_pressed)
 	
 func _input(event):
-	if event.is_action_pressed("confirm"): # "ui_accept" is Enter/Space by default
+	if event.is_action_pressed("confirm"):
 		_on_button_pressed()
 
 func _on_button_pressed():
-	current_line += 1
-	
-	if current_line < dialog_lines.size():
-		var line_obj = dialog_lines[current_line]
-		label.text = line_obj.speaker + ": " + line_obj.line if !line_obj.speaker.is_empty() else line_obj.line
-	else:
-		# Check if this is the first level and tutorial hasn't been shown yet
-		if Globals.current_level == 0 and not Globals.tutorial_shown:
-			Globals.tutorial_shown = true
-			get_tree().change_scene_to_file("res://scenes/tutorial.tscn")
-		else:
-			# Show pre-scale dialog before scale preview for all levels
-			get_tree().change_scene_to_file("res://scenes/pre_scale_dialog.tscn")
+	# Go to scale preview
+	get_tree().change_scene_to_file("res://scenes/scale_preview.tscn")
 
 func create_ui_elements():
 	# Set up the root Control node to fill the screen
@@ -70,8 +57,7 @@ func create_ui_elements():
 
 	# === 3. Dialog Label ===
 	label = Label.new()
-	var line_obj = dialog_lines[current_line]
-	label.text = line_obj.speaker + ": " + line_obj.line if !line_obj.speaker.is_empty() else line_obj.line
+	label.text = dialog_text
 	label.autowrap_mode = TextServer.AUTOWRAP_WORD
 	label.size_flags_horizontal = Control.SIZE_EXPAND_FILL
 	label.size_flags_vertical = Control.SIZE_EXPAND_FILL
