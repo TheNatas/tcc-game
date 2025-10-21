@@ -18,16 +18,6 @@ const TOTAL_DEGREES := 7
 const DEGREE_HEIGHT := 60
 const DEGREE_GAP := 20
 
-func _ready() -> void:
-	# In fixed movement mode, ensure player starts at the correct visual position
-	if Globals.movement_style == "fixed":
-		var viewport_size = get_viewport_rect().size
-		var total_height = TOTAL_DEGREES * DEGREE_HEIGHT + (TOTAL_DEGREES - 1) * DEGREE_GAP
-		var start_y = (viewport_size.y + total_height) / 2 - DEGREE_HEIGHT
-		var target_degree_y = start_y - current_degree * (DEGREE_HEIGHT + DEGREE_GAP) + DEGREE_HEIGHT / 2
-		position.y = target_degree_y
-		print("_ready: Initialized player at degree ", current_degree, " with Y position: ", position.y)
-
 func _process(delta: float) -> void:
 	if Globals.movement_style == "free":
 		_process_free_movement(delta)
