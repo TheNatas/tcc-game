@@ -1,6 +1,7 @@
 extends Control
 
 @onready var start_button: Button = null
+@onready var config_button: Button = null
 @onready var credits_button: Button = null
 @onready var exit_button: Button = null
 
@@ -43,6 +44,13 @@ func _ready() -> void:
 	vbox.add_child(start_button)
 	start_button.connect("pressed", Callable(self, "_on_start_game_pressed"))
 
+	# Configuration Button
+	config_button = Button.new()
+	config_button.text = "Configurações"
+	config_button.custom_minimum_size = Vector2(150, 40)
+	vbox.add_child(config_button)
+	config_button.connect("pressed", Callable(self, "_on_config_pressed"))
+
 	# Credits Button
 	credits_button = Button.new()
 	credits_button.text = "Créditos"
@@ -66,6 +74,8 @@ func _input(event: InputEvent) -> void:
 		# Check which button has focus and press it
 		if start_button.has_focus():
 			_on_start_game_pressed()
+		elif config_button.has_focus():
+			_on_config_pressed()
 		elif credits_button.has_focus():
 			_on_credits_pressed()
 		elif exit_button.has_focus():
@@ -82,6 +92,10 @@ func _on_start_game_pressed() -> void:
 	get_tree().change_scene_to_file("res://scenes/context.tscn")
 
 
+func _on_config_pressed() -> void:
+	get_tree().change_scene_to_file("res://scenes/config.tscn")
+
+
 func _on_credits_pressed() -> void:
 	Globals.from_game_finished = false
 	get_tree().change_scene_to_file("res://scenes/credits.tscn")
@@ -89,4 +103,3 @@ func _on_credits_pressed() -> void:
 
 func _on_exit_pressed() -> void:
 	get_tree().quit()
-

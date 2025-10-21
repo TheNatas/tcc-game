@@ -1,11 +1,14 @@
 extends Node2D
 
-const STARTING_DEGREE = 3
+const STARTING_DEGREE = 0
 
 var current_level = 0
 var tutorial_shown = false
 
 var from_game_finished = false
+
+# Movement style: "free" or "fixed"
+var movement_style = "fixed"
 
 var SONGS : Array[Song] = [
 	# ----------------
