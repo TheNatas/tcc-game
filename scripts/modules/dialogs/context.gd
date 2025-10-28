@@ -6,22 +6,38 @@ var current_line = 0
 var label : Label
 var button : Button
 
+# Audio player for voice-over
+var audio_player : AudioStreamPlayer
+
 var dialog_lines : Array[DialogLine] = Levels.levels[Globals.current_level]
 
 func _ready():
 	create_ui_elements()
 	button.pressed.connect(_on_button_pressed)
 	
+	# Create audio player for voice-over
+	audio_player = AudioStreamPlayer.new()
+	add_child(audio_player)
+	
+	# Play voice-over for the first line if available
+	play_voice_over(dialog_lines[current_line])
+	
 func _input(event):
 	if event.is_action_pressed("confirm"): # "ui_accept" is Enter/Space by default
 		_on_button_pressed()
 
 func _on_button_pressed():
+	# Stop any currently playing voice-over
+	if audio_player.playing:
+		audio_player.stop()
+	
 	current_line += 1
 	
 	if current_line < dialog_lines.size():
 		var line_obj = dialog_lines[current_line]
 		label.text = line_obj.speaker + ": " + line_obj.line if !line_obj.speaker.is_empty() else line_obj.line
+		# Play voice-over if available
+		play_voice_over(line_obj)
 	else:
 		# Check if this is the first level and tutorial hasn't been shown yet
 		if Globals.current_level == 0 and not Globals.tutorial_shown:
@@ -30,6 +46,13 @@ func _on_button_pressed():
 		else:
 			# Show pre-scale dialog before scale preview for all levels
 			get_tree().change_scene_to_file("res://scenes/pre_scale_dialog.tscn")
+
+func play_voice_over(line_obj: DialogLine):
+	if line_obj.has_voice_over():
+		var audio_stream = load(line_obj.voice_over_path)
+		if audio_stream:
+			audio_player.stream = audio_stream
+			audio_player.play()
 
 func create_ui_elements():
 	# Set up the root Control node to fill the screen
