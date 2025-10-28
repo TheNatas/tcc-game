@@ -124,3 +124,7 @@ func _input(event: InputEvent) -> void:
 			_on_fixed_movement_pressed()
 		elif back_button.has_focus():
 			_on_back_pressed()
+	if event.is_action_pressed("back"):
+		# Check which button has focus and press it
+		if back_button != null:
+			_on_back_pressed()

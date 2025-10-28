@@ -142,6 +142,10 @@ func _input(event: InputEvent) -> void:
 			_on_back_pressed()
 		elif continue_button != null and continue_button.has_focus():
 			_on_continue_pressed()
+	if event.is_action_pressed("back"):
+		# Check which button has focus and press it
+		if back_button != null:
+			_on_back_pressed()
 
 
 func _on_back_pressed() -> void:
