@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://gqog2bheiabi"
+path="res://.godot/imported/voice overs full - detetive sonora ending - 5.wav-4ae97c29813e6a595880e327254cf938.sample"
+
+[deps]
+
+source_file="res://assets/voice overs/voice overs full - detetive sonora ending - 5.wav"
+dest_files=["res://.godot/imported/voice overs full - detetive sonora ending - 5.wav-4ae97c29813e6a595880e327254cf938.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=2

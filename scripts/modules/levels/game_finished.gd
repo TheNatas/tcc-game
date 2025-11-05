@@ -6,21 +6,23 @@ const MINISTRA_ARMAS_MINIATURE = "res://assets/dialog miniatures/dialog_ministra
 const CRIMINOSO_MINIATURE = "res://assets/dialog miniatures/dialog_criminoso.png"
 
 var dialog_lines : Array[DialogLine] = [
-	DialogLine.new("Conseguimos! Finalmente!", "Secretário", TEST_VOICE_OVER, MINISTRA_ARMAS_MINIATURE),
-	DialogLine.new("É o fim da linha, senhor bandido. Pegamos você.", "Secretário", TEST_VOICE_OVER, MINISTRA_ARMAS_MINIATURE),
-	DialogLine.new("Mas que droga! Essa joça não deveria ser indetectável?", "Criminoso", TEST_VOICE_OVER, CRIMINOSO_MINIATURE),
-	DialogLine.new("Talvez para nós... mas certamente não para o detetive Sonora.", "Secretário", TEST_VOICE_OVER, MINISTRA_ARMAS_MINIATURE),
-	DialogLine.new("Foi um exímio trabalho, detetive. Não conseguiríamos sem você.", "Secretário", TEST_VOICE_OVER, MINISTRA_ARMAS_MINIATURE),
-	DialogLine.new("Evidentemente...", "Detetive Sonora", TEST_VOICE_OVER, DETETIVE_SONORA_MINIATURE),
-	DialogLine.new("Então... isso quita as minhas dívidas com vocês?", "Detetive Sonora", TEST_VOICE_OVER, DETETIVE_SONORA_MINIATURE),
-	DialogLine.new("Com certeza. Considere-se um homem livre agora.", "Secretário", TEST_VOICE_OVER, MINISTRA_ARMAS_MINIATURE),
-	DialogLine.new("Perfeito.", "Detetive Sonora", TEST_VOICE_OVER, DETETIVE_SONORA_MINIATURE),
-	DialogLine.new("Sendo assim, nos veremos em... Bom, eu sinceramente não gostaria de revê-lo, na verdade.", "Detetive Sonora", TEST_VOICE_OVER, DETETIVE_SONORA_MINIATURE),
-	DialogLine.new("*hmphf* Isso é compreensível.", "Secretário", TEST_VOICE_OVER, MINISTRA_ARMAS_MINIATURE),
-	DialogLine.new("Bom descanso, detetive.", "Secretário", TEST_VOICE_OVER, MINISTRA_ARMAS_MINIATURE),
-	DialogLine.new("Obrigado. E bom trabalho para você.", "Detetive Sonora", TEST_VOICE_OVER, DETETIVE_SONORA_MINIATURE),
-	DialogLine.new("Ei, você ainda vai pagar por isso, detetive!", "Criminoso", TEST_VOICE_OVER, CRIMINOSO_MINIATURE),
-	DialogLine.new("Cobre de outro, amigão. Estou de férias agora.", "Detetive Sonora", TEST_VOICE_OVER, DETETIVE_SONORA_MINIATURE),
+	DialogLine.new("Conseguimos! Finalmente!", "Ministra de Armas", TEST_VOICE_OVER, MINISTRA_ARMAS_MINIATURE),
+	DialogLine.new("É o fim da linha pra você, amigão. Te pegamos.", "Ministra de Armas", TEST_VOICE_OVER, MINISTRA_ARMAS_MINIATURE),
+	DialogLine.new("Mas que droga! Essa joça não devia se indetectável?", "Criminoso", "res://assets/voice overs/voice overs full - mas que droga! essa joça não devia ser indetectável_.wav", CRIMINOSO_MINIATURE),
+	DialogLine.new("Talvez para nós... mas certamente não para o detetive Sonora.", "Ministra de Armas", TEST_VOICE_OVER, MINISTRA_ARMAS_MINIATURE),
+	DialogLine.new("Foi um exímio trabalho, detetive. Não conseguiríamos sem o senhor.", "Ministra de Armas", TEST_VOICE_OVER, MINISTRA_ARMAS_MINIATURE),
+	DialogLine.new("Evidentemente...", "Detetive Sonora", "res://assets/voice overs/voice overs full - detetive sonora ending - 1.wav", DETETIVE_SONORA_MINIATURE),
+	DialogLine.new("Então... isso quita as minhas dívidas com vocês?", "Detetive Sonora", "res://assets/voice overs/voice overs full - detetive sonora ending - 2.wav", DETETIVE_SONORA_MINIATURE),
+	DialogLine.new("Com certeza. Considere-se um homem livre agora.", "Ministra de Armas", TEST_VOICE_OVER, MINISTRA_ARMAS_MINIATURE),
+	DialogLine.new("Perfeito.", "Detetive Sonora", "res://assets/voice overs/voice overs full - detetive sonora ending - 3.wav", DETETIVE_SONORA_MINIATURE),
+	DialogLine.new("Sendo assim, nos veremos em... Bom, eu sinceramente não gostaria de revê-la, na verdade.", "Detetive Sonora", "res://assets/voice overs/voice overs full - detetive sonora ending - 4.wav", DETETIVE_SONORA_MINIATURE),
+	DialogLine.new("*hmphf* Isso é compreensível.", "Ministra de Armas", TEST_VOICE_OVER, MINISTRA_ARMAS_MINIATURE),
+	DialogLine.new("Bom descanso, detetive.", "Ministra de Armas", TEST_VOICE_OVER, MINISTRA_ARMAS_MINIATURE),
+	DialogLine.new("Obrigado.", "Detetive Sonora", TEST_VOICE_OVER, DETETIVE_SONORA_MINIATURE),
+	DialogLine.new("Ei, você ainda vai pagar por isso, detetive!", "Criminoso", "res://assets/voice overs/voice overs full - ei! você ainda vai pagar por isso, detetive!.wav", CRIMINOSO_MINIATURE),
+	DialogLine.new("Somente a ministra de Armas pode me chamar de \"você\" aqui, amigão.", "Detetive Sonora", "res://assets/voice overs/voice overs full - detetive sonora ending - 5.wav", DETETIVE_SONORA_MINIATURE),
+	DialogLine.new("Finalmente…", "Ministra de Armas", TEST_VOICE_OVER, MINISTRA_ARMAS_MINIATURE),
+	DialogLine.new("E cobre de outro. Estou de férias agora.", "Detetive Sonora", "res://assets/voice overs/voice overs full - detetive sonora ending - 6.wav", DETETIVE_SONORA_MINIATURE),
 ]
 
 var extra_dialog_lines : Array[DialogLine] = [

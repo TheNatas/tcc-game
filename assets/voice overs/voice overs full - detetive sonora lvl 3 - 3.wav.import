@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://c7k6sjurx8tl8"
+path="res://.godot/imported/voice overs full - detetive sonora lvl 3 - 3.wav-8251012f4b46dbdbb7b5d09708c6a3f1.sample"
+
+[deps]
+
+source_file="res://assets/voice overs/voice overs full - detetive sonora lvl 3 - 3.wav"
+dest_files=["res://.godot/imported/voice overs full - detetive sonora lvl 3 - 3.wav-8251012f4b46dbdbb7b5d09708c6a3f1.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=2

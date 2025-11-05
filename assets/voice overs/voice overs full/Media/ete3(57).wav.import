@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://b5y8dthoxsv4u"
+path="res://.godot/imported/ete3(57).wav-6be98bcec89ab2f7545cba9a9dfb8346.sample"
+
+[deps]
+
+source_file="res://assets/voice overs/voice overs full/Media/ete3(57).wav"
+dest_files=["res://.godot/imported/ete3(57).wav-6be98bcec89ab2f7545cba9a9dfb8346.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=2
