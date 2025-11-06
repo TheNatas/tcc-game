@@ -9,6 +9,7 @@ var title_label : Label
 var page_indicator : Label
 var content_container : Control  # Will hold either VBox or HBox depending on layout
 var media_display : Control  # Can be TextureRect or VideoStreamPlayer
+var audio_player : AudioStreamPlayer = null
 
 # Tutorial content pages from how_to_play.md
 var tutorial_pages : Array[Dictionary] = [
@@ -43,6 +44,14 @@ var tutorial_pages : Array[Dictionary] = [
 ]
 
 func _ready():
+	# Create and start audio player for background music
+	audio_player = AudioStreamPlayer.new()
+	audio_player.stream = preload("res://assets/songs/theme.wav")
+	audio_player.autoplay = true
+	audio_player.volume_db = 0
+	add_child(audio_player)
+	audio_player.play()
+	
 	create_ui_elements()
 	button.pressed.connect(_on_button_pressed)
 	
@@ -56,10 +65,14 @@ func _on_button_pressed():
 	if current_page < tutorial_pages.size():
 		# Recreate UI for new page (since layout may change)
 		for child in get_children():
-			child.queue_free()
+			# Don't remove the audio player
+			if child != audio_player:
+				child.queue_free()
 		create_ui_elements()
 	else:
-		# Tutorial finished, go to pre-scale dialog
+		# Tutorial finished, stop audio and go to pre-scale dialog
+		if audio_player:
+			audio_player.stop()
 		get_tree().change_scene_to_file("res://scenes/pre_scale_dialog.tscn")
 
 func update_page_content():
