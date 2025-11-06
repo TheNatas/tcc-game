@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://umglhnkrm3a1"
+path="res://.godot/imported/voice overs full - estou ligando para te atualizar.wav-71db76f4bfdfd84adc14fd1826b5a5ea.sample"
+
+[deps]
+
+source_file="res://assets/voice overs/voice overs full - estou ligando para te atualizar.wav"
+dest_files=["res://.godot/imported/voice overs full - estou ligando para te atualizar.wav-71db76f4bfdfd84adc14fd1826b5a5ea.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=2

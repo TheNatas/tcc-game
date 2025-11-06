@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://bc6ep0b0tf80c"
+path="res://.godot/imported/voice overs full - Foi um exímio trabalho, detetive.wav-0080b7769e6530100ab549dc5c51671b.sample"
+
+[deps]
+
+source_file="res://assets/voice overs/voice overs full - Foi um exímio trabalho, detetive.wav"
+dest_files=["res://.godot/imported/voice overs full - Foi um exímio trabalho, detetive.wav-0080b7769e6530100ab549dc5c51671b.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=2

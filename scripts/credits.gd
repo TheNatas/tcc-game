@@ -99,6 +99,9 @@ func _ready() -> void:
 	composer.add_theme_font_size_override("font_size", 16)
 	vbox.add_child(composer)
 
+	# Spacing
+	vbox.add_child(Control.new())
+
 	# Voiceover Section
 	var voiceover_title := Label.new()
 	voiceover_title.text = "Dublagem"
@@ -119,6 +122,11 @@ func _ready() -> void:
 	voice_ator3.text = "Criminoso: Vinicius C. Serafin\n(@vinicius_soo)"
 	voice_ator3.add_theme_font_size_override("font_size", 16)
 	vbox.add_child(voice_ator3)
+
+	var voice_acting_coord := Label.new()
+	voice_acting_coord.text = "Coordenação: Milena C. Brasil\n(@mibrasilll)"
+	voice_acting_coord.add_theme_font_size_override("font_size", 16)
+	vbox.add_child(voice_acting_coord)
 
 	# Create a container for the button at the bottom
 	var bottom_container := CenterContainer.new()

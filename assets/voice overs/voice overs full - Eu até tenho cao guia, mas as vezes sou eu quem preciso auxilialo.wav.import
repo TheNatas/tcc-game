@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://bnn0wc4uuv5b3"
+path="res://.godot/imported/voice overs full - Eu até tenho cao guia, mas as vezes sou eu quem preciso auxilialo.wav-61fbf324ed88e9432d121290d2d3aea2.sample"
+
+[deps]
+
+source_file="res://assets/voice overs/voice overs full - Eu até tenho cao guia, mas as vezes sou eu quem preciso auxilialo.wav"
+dest_files=["res://.godot/imported/voice overs full - Eu até tenho cao guia, mas as vezes sou eu quem preciso auxilialo.wav-61fbf324ed88e9432d121290d2d3aea2.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=2

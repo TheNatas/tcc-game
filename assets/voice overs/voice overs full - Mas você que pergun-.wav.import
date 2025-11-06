@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://bwghgthvequdc"
+path="res://.godot/imported/voice overs full - Mas você que pergun-.wav-08933e4c057fc27e87289061a0e13465.sample"
+
+[deps]
+
+source_file="res://assets/voice overs/voice overs full - Mas você que pergun-.wav"
+dest_files=["res://.godot/imported/voice overs full - Mas você que pergun-.wav-08933e4c057fc27e87289061a0e13465.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=2

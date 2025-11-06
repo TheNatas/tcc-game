@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://dnljimv13hscu"
+path="res://.godot/imported/voice overs full - Eu acho bem difícil acreditar nisso.wav-a04140311419e2ab63261e6f32db3256.sample"
+
+[deps]
+
+source_file="res://assets/voice overs/voice overs full - Eu acho bem difícil acreditar nisso.wav"
+dest_files=["res://.godot/imported/voice overs full - Eu acho bem difícil acreditar nisso.wav-a04140311419e2ab63261e6f32db3256.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=2
