@@ -99,6 +99,27 @@ func _ready() -> void:
 	composer.add_theme_font_size_override("font_size", 16)
 	vbox.add_child(composer)
 
+	# Voiceover Section
+	var voiceover_title := Label.new()
+	voiceover_title.text = "Dublagem"
+	voiceover_title.add_theme_font_size_override("font_size", 24)
+	vbox.add_child(voiceover_title)
+
+	var voice_ator := Label.new()
+	voice_ator.text = "Detetive Sonora: Lorenzo Silveira Ribeiro\n(@loreribeiro)"
+	voice_ator.add_theme_font_size_override("font_size", 16)
+	vbox.add_child(voice_ator)
+
+	var voice_ator2 := Label.new()
+	voice_ator2.text = "Ministra de Armas: Vitória Moreira Alves\n(@vitoria__allvez)"
+	voice_ator2.add_theme_font_size_override("font_size", 16)
+	vbox.add_child(voice_ator2)
+
+	var voice_ator3 := Label.new()
+	voice_ator3.text = "Criminoso: Vinicius C. Serafin\n(@vinicius_soo)"
+	voice_ator3.add_theme_font_size_override("font_size", 16)
+	vbox.add_child(voice_ator3)
+
 	# Create a container for the button at the bottom
 	var bottom_container := CenterContainer.new()
 	bottom_container.anchor_left = 0.0
