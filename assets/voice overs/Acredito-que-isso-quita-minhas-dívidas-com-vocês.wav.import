@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://b3b3s3wcmf10k"
+path="res://.godot/imported/Acredito-que-isso-quita-minhas-dívidas-com-vocês.wav-1c9cea0eb2ec495d585702b0de517c33.sample"
+
+[deps]
+
+source_file="res://assets/voice overs/Acredito-que-isso-quita-minhas-dívidas-com-vocês.wav"
+dest_files=["res://.godot/imported/Acredito-que-isso-quita-minhas-dívidas-com-vocês.wav-1c9cea0eb2ec495d585702b0de517c33.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=2
