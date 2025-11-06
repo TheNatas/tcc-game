@@ -1,22 +1,68 @@
 extends Control
 
+const DETETIVE_SONORA_MINIATURE = "res://assets/dialog miniatures/dialog_detetive_sonora.png"
+
+var dialog_lines : Array[DialogLine] = [
+	DialogLine.new("Seria de bom tom treinar os ouvidos antes de seguir...", "Detetive Sonora", "res://assets/voice overs/Seria de bom tom treinar os ouvidos antes de seguir.wav", DETETIVE_SONORA_MINIATURE)
+]
+
+var current_line = 0
+
 # UI elements
 var label : Label
 var button : Button
+var miniature_texture_rect : TextureRect  # For character portrait
 
-var dialog_text = "Seria de bom tom treinar os ouvidos antes de seguir..."
+# Audio player for voice-over
+var audio_player : AudioStreamPlayer
 
 func _ready():
 	create_ui_elements()
 	button.pressed.connect(_on_button_pressed)
+	
+	# Create audio player for voice-over
+	audio_player = AudioStreamPlayer.new()
+	add_child(audio_player)
+	
+	# Play voice-over for the first line if available
+	play_voice_over(dialog_lines[current_line])
 	
 func _input(event):
 	if event.is_action_pressed("confirm"):
 		_on_button_pressed()
 
 func _on_button_pressed():
-	# Go to scale preview
-	get_tree().change_scene_to_file("res://scenes/scale_preview.tscn")
+	# Stop any currently playing voice-over
+	if audio_player.playing:
+		audio_player.stop()
+	
+	current_line += 1
+	if current_line < dialog_lines.size():
+		var line_obj = dialog_lines[current_line]
+		label.text = line_obj.speaker + ": " + line_obj.line if !line_obj.speaker.is_empty() else line_obj.line
+		# Update miniature image
+		update_miniature(line_obj)
+		# Play voice-over if available
+		play_voice_over(line_obj)
+	else:
+		# Go to scale preview
+		get_tree().change_scene_to_file("res://scenes/scale_preview.tscn")
+
+func update_miniature(line_obj: DialogLine):
+	if line_obj.has_miniature():
+		var texture = load(line_obj.miniature_image_path)
+		if texture:
+			miniature_texture_rect.texture = texture
+			miniature_texture_rect.visible = true
+	else:
+		miniature_texture_rect.visible = false
+
+func play_voice_over(line_obj: DialogLine):
+	if line_obj.has_voice_over():
+		var audio_stream = load(line_obj.voice_over_path)
+		if audio_stream:
+			audio_player.stream = audio_stream
+			audio_player.play()
 
 func create_ui_elements():
 	# Set up the root Control node to fill the screen
@@ -55,14 +101,35 @@ func create_ui_elements():
 	vbox.set("theme_override_constants/separation", 20)
 	add_child(vbox)
 
+	# === 2.5. HBox for miniature and label ===
+	var hbox = HBoxContainer.new()
+	hbox.size_flags_horizontal = Control.SIZE_EXPAND_FILL
+	hbox.size_flags_vertical = Control.SIZE_EXPAND_FILL
+	hbox.set("theme_override_constants/separation", 15)
+	vbox.add_child(hbox)
+
+	# === 2.6. Miniature Image ===
+	miniature_texture_rect = TextureRect.new()
+	miniature_texture_rect.custom_minimum_size = Vector2(80, 80)
+	miniature_texture_rect.expand_mode = TextureRect.EXPAND_FIT_WIDTH_PROPORTIONAL
+	miniature_texture_rect.stretch_mode = TextureRect.STRETCH_KEEP_ASPECT_CENTERED
+	miniature_texture_rect.visible = false  # Hidden by default
+	var line_obj = dialog_lines[current_line]
+	if line_obj.has_miniature():
+		var texture = load(line_obj.miniature_image_path)
+		if texture:
+			miniature_texture_rect.texture = texture
+			miniature_texture_rect.visible = true
+	hbox.add_child(miniature_texture_rect)
+
 	# === 3. Dialog Label ===
 	label = Label.new()
-	label.text = dialog_text
+	label.text = line_obj.speaker + ": " + line_obj.line if !line_obj.speaker.is_empty() else line_obj.line
 	label.autowrap_mode = TextServer.AUTOWRAP_WORD
 	label.size_flags_horizontal = Control.SIZE_EXPAND_FILL
 	label.size_flags_vertical = Control.SIZE_EXPAND_FILL
 	label.custom_minimum_size = Vector2(0, 80)
-	vbox.add_child(label)
+	hbox.add_child(label)
 
 	# === 4. Continue Button ===
 	button = Button.new()

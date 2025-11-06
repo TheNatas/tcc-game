@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://shyvro52mu2v"
+path="res://.godot/imported/Seria de bom tom treinar os ouvidos antes de seguir.wav-6b799a3bb6280091b38f848a39f87e73.sample"
+
+[deps]
+
+source_file="res://assets/voice overs/Seria de bom tom treinar os ouvidos antes de seguir.wav"
+dest_files=["res://.godot/imported/Seria de bom tom treinar os ouvidos antes de seguir.wav-6b799a3bb6280091b38f848a39f87e73.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=2
