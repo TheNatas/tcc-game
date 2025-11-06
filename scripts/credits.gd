@@ -2,8 +2,10 @@ extends Control
 
 @onready var back_button: Button = null
 @onready var continue_button: Button = null
+@onready var scroll_container: ScrollContainer = null
 
 var came_from_game_finished := false
+const SCROLL_SPEED := 30  # Pixels per scroll action
 
 func _ready() -> void:
 	# Make this root control fill the window
@@ -22,19 +24,19 @@ func _ready() -> void:
 	add_child(background)
 
 	# Create a scroll container for credits
-	var scroll := ScrollContainer.new()
-	scroll.anchor_left = 0.1
-	scroll.anchor_top = 0.1
-	scroll.anchor_right = 0.9
-	scroll.anchor_bottom = 0.85
-	scroll.follow_focus = true
-	add_child(scroll)
+	scroll_container = ScrollContainer.new()
+	scroll_container.anchor_left = 0.1
+	scroll_container.anchor_top = 0.1
+	scroll_container.anchor_right = 0.9
+	scroll_container.anchor_bottom = 0.85
+	scroll_container.follow_focus = true
+	add_child(scroll_container)
 
 	# Create a vertical container for credits content
 	var vbox := VBoxContainer.new()
 	vbox.size_flags_horizontal = Control.SIZE_FILL
 	vbox.add_theme_constant_override("separation", 20)
-	scroll.add_child(vbox)
+	scroll_container.add_child(vbox)
 
 	# Title
 	var title := Label.new()
@@ -165,6 +167,16 @@ func _ready() -> void:
 
 
 func _input(event: InputEvent) -> void:
+	# Handle scrolling with move_up/move_down
+	if event.is_action_pressed("move_up"):
+		if scroll_container != null:
+			scroll_container.scroll_vertical -= SCROLL_SPEED
+			get_viewport().set_input_as_handled()
+	elif event.is_action_pressed("move_down"):
+		if scroll_container != null:
+			scroll_container.scroll_vertical += SCROLL_SPEED
+			get_viewport().set_input_as_handled()
+	
 	if event.is_action_pressed("confirm"):
 		# Check which button has focus and press it
 		if back_button != null and back_button.has_focus():
