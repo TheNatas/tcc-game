@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://dyn65qlsq54eh"
+path="res://.godot/imported/nós confirmamos o que o senhor disse(6).wav-fb8968e1b36b8ca5209eec6ae530b543.sample"
+
+[deps]
+
+source_file="res://assets/voice overs/voice overs full/Media/nós confirmamos o que o senhor disse(6).wav"
+dest_files=["res://.godot/imported/nós confirmamos o que o senhor disse(6).wav-fb8968e1b36b8ca5209eec6ae530b543.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=2

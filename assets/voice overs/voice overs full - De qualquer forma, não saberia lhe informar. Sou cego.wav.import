@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://cnefbjbnde1qd"
+path="res://.godot/imported/voice overs full - De qualquer forma, não saberia lhe informar. Sou cego.wav-95fc1bbe0d0d42b33968da245d07bc53.sample"
+
+[deps]
+
+source_file="res://assets/voice overs/voice overs full - De qualquer forma, não saberia lhe informar. Sou cego.wav"
+dest_files=["res://.godot/imported/voice overs full - De qualquer forma, não saberia lhe informar. Sou cego.wav-95fc1bbe0d0d42b33968da245d07bc53.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=2

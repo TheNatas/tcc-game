@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://cutqxj1cfxyy"
+path="res://.godot/imported/voice overs full - Ministra, eu conheço essa aeronave como a palma da minha mão.wav-10ca82fc87c21b3e7000c64098dee050.sample"
+
+[deps]
+
+source_file="res://assets/voice overs/voice overs full - Ministra, eu conheço essa aeronave como a palma da minha mão.wav"
+dest_files=["res://.godot/imported/voice overs full - Ministra, eu conheço essa aeronave como a palma da minha mão.wav-10ca82fc87c21b3e7000c64098dee050.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=2

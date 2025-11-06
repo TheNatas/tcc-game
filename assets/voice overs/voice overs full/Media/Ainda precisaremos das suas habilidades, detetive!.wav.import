@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://dfvvfpba48nmf"
+path="res://.godot/imported/Ainda precisaremos das suas habilidades, detetive!.wav-998ad24bcb7a1a14c3d5c7576f27bfff.sample"
+
+[deps]
+
+source_file="res://assets/voice overs/voice overs full/Media/Ainda precisaremos das suas habilidades, detetive!.wav"
+dest_files=["res://.godot/imported/Ainda precisaremos das suas habilidades, detetive!.wav-998ad24bcb7a1a14c3d5c7576f27bfff.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=2

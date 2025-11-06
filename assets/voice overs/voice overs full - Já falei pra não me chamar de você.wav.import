@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://dffgx1g04xb1a"
+path="res://.godot/imported/voice overs full - Já falei pra não me chamar de você.wav-b652b70083476d598f3052b7b00598f1.sample"
+
+[deps]
+
+source_file="res://assets/voice overs/voice overs full - Já falei pra não me chamar de você.wav"
+dest_files=["res://.godot/imported/voice overs full - Já falei pra não me chamar de você.wav-b652b70083476d598f3052b7b00598f1.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=2

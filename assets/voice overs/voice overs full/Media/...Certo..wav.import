@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://c7ahmd0f4ffw1"
+path="res://.godot/imported/...Certo..wav-15ecb9a543ced8e2211616c085d3f11c.sample"
+
+[deps]
+
+source_file="res://assets/voice overs/voice overs full/Media/...Certo..wav"
+dest_files=["res://.godot/imported/...Certo..wav-15ecb9a543ced8e2211616c085d3f11c.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=2

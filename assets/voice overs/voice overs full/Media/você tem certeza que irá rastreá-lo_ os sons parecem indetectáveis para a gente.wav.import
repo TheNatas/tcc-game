@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://itgsk8cyj6e8"
+path="res://.godot/imported/você tem certeza que irá rastreá-lo_ os sons parecem indetectáveis para a gente.wav-5e6490f6e5d34aca3b49cd01582b9094.sample"
+
+[deps]
+
+source_file="res://assets/voice overs/voice overs full/Media/você tem certeza que irá rastreá-lo_ os sons parecem indetectáveis para a gente.wav"
+dest_files=["res://.godot/imported/você tem certeza que irá rastreá-lo_ os sons parecem indetectáveis para a gente.wav-5e6490f6e5d34aca3b49cd01582b9094.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=2

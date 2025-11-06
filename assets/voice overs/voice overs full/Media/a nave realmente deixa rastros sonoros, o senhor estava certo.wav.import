@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://cv176qqvp5yrx"
+path="res://.godot/imported/a nave realmente deixa rastros sonoros, o senhor estava certo.wav-2b28644ae66435c5d52ebee783c1beaf.sample"
+
+[deps]
+
+source_file="res://assets/voice overs/voice overs full/Media/a nave realmente deixa rastros sonoros, o senhor estava certo.wav"
+dest_files=["res://.godot/imported/a nave realmente deixa rastros sonoros, o senhor estava certo.wav-2b28644ae66435c5d52ebee783c1beaf.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=2

@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://beyq0oo2vn2iy"
+path="res://.godot/imported/detetive sonora_ sou de armas. estou ligando para atualizá-lo sobre a sua missão(4).wav-b007b7b3d929f1b577820c8b0141e4f6.sample"
+
+[deps]
+
+source_file="res://assets/voice overs/voice overs full/Media/detetive sonora_ sou de armas. estou ligando para atualizá-lo sobre a sua missão(4).wav"
+dest_files=["res://.godot/imported/detetive sonora_ sou de armas. estou ligando para atualizá-lo sobre a sua missão(4).wav-b007b7b3d929f1b577820c8b0141e4f6.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=2

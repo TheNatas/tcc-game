@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://duqowakv58q0e"
+path="res://.godot/imported/Detetive_ Incrível! O senhor conseguiu rastreá-lo!(3).wav-c42e0a2e8fef7ff20b9be55f25653c36.sample"
+
+[deps]
+
+source_file="res://assets/voice overs/voice overs full/Media/Detetive_ Incrível! O senhor conseguiu rastreá-lo!(3).wav"
+dest_files=["res://.godot/imported/Detetive_ Incrível! O senhor conseguiu rastreá-lo!(3).wav-c42e0a2e8fef7ff20b9be55f25653c36.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=2

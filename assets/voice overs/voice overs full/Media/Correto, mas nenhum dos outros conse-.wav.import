@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://bq6r5tfm2xytk"
+path="res://.godot/imported/Correto, mas nenhum dos outros conse-.wav-c52516287e1f77ca35d18b30718ae3b0.sample"
+
+[deps]
+
+source_file="res://assets/voice overs/voice overs full/Media/Correto, mas nenhum dos outros conse-.wav"
+dest_files=["res://.godot/imported/Correto, mas nenhum dos outros conse-.wav-c52516287e1f77ca35d18b30718ae3b0.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=2

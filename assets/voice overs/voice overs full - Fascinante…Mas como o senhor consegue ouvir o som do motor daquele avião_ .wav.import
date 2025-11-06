@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://5kfts1gglfsk"
+path="res://.godot/imported/voice overs full - Fascinante…Mas como o senhor consegue ouvir o som do motor daquele avião_ .wav-a99b8b54690f34fdd3fba274f11bc2bc.sample"
+
+[deps]
+
+source_file="res://assets/voice overs/voice overs full - Fascinante…Mas como o senhor consegue ouvir o som do motor daquele avião_ .wav"
+dest_files=["res://.godot/imported/voice overs full - Fascinante…Mas como o senhor consegue ouvir o som do motor daquele avião_ .wav-a99b8b54690f34fdd3fba274f11bc2bc.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=2

@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://dib5dthnteej3"
+path="res://.godot/imported/aquela acerca do furto de uma aeronave militar indetectável.wav-f007391894d1d4026f483419d5fc016e.sample"
+
+[deps]
+
+source_file="res://assets/voice overs/voice overs full/Media/aquela acerca do furto de uma aeronave militar indetectável.wav"
+dest_files=["res://.godot/imported/aquela acerca do furto de uma aeronave militar indetectável.wav-f007391894d1d4026f483419d5fc016e.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=2

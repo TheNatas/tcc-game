@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://dk7wvbhaqlrxh"
+path="res://.godot/imported/Mas como o senhor consegue ouvir o som do motor daquele avião_ É graças a uma super audição nível Super-Homem_.wav-6c5cfa4b651517bd67a5fe1f5def597d.sample"
+
+[deps]
+
+source_file="res://assets/voice overs/voice overs full/Media/Mas como o senhor consegue ouvir o som do motor daquele avião_ É graças a uma super audição nível Super-Homem_.wav"
+dest_files=["res://.godot/imported/Mas como o senhor consegue ouvir o som do motor daquele avião_ É graças a uma super audição nível Super-Homem_.wav-6c5cfa4b651517bd67a5fe1f5def597d.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=2

@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://dnc3q8e4njpvh"
+path="res://.godot/imported/um avião silencioso, um fone de ouvido muito alto e um charuto cubano.wav-d7b96beb372c2c1464873bdef1b6e202.sample"
+
+[deps]
+
+source_file="res://assets/voice overs/voice overs full/Media/um avião silencioso, um fone de ouvido muito alto e um charuto cubano.wav"
+dest_files=["res://.godot/imported/um avião silencioso, um fone de ouvido muito alto e um charuto cubano.wav-d7b96beb372c2c1464873bdef1b6e202.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=2
