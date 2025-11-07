@@ -6,6 +6,7 @@ extends Control
 
 var came_from_game_finished := false
 const SCROLL_SPEED := 30  # Pixels per scroll action
+var credits_audio_player: AudioStreamPlayer = null
 
 func _ready() -> void:
 	# Make this root control fill the window
@@ -147,6 +148,16 @@ func _ready() -> void:
 	# Get info if we came from game_finished scene
 	came_from_game_finished = Globals.from_game_finished
 	Globals.from_game_finished = false
+	
+	# Play music based on where we came from
+	if came_from_game_finished:
+		# Play the complete theme variation when coming from game finished
+		credits_audio_player = AudioStreamPlayer.new()
+		add_child(credits_audio_player)
+		credits_audio_player.stream = preload("res://assets/songs/theme complete.wav")
+		credits_audio_player.connect("finished", Callable(self, "_on_credits_music_finished"))
+		credits_audio_player.play()
+	# If coming from main menu, the regular theme music is already playing
 
 	# Back Button (shown when accessed from main menu)
 	if not came_from_game_finished:
@@ -194,4 +205,15 @@ func _on_back_pressed() -> void:
 
 
 func _on_continue_pressed() -> void:
+	# Stop credits music if it was playing
+	if credits_audio_player and credits_audio_player.playing:
+		credits_audio_player.stop()
+	# Start regular menu music for main menu
+	MusicManager.play_menu_music()
 	get_tree().change_scene_to_file("res://scenes/main_menu.tscn")
+
+
+func _on_credits_music_finished() -> void:
+	# Loop the credits music
+	if credits_audio_player:
+		credits_audio_player.play()

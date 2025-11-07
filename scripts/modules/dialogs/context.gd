@@ -13,6 +13,9 @@ var audio_player : AudioStreamPlayer
 var dialog_lines : Array[DialogLine] = Levels.levels[Globals.current_level]
 
 func _ready():
+	# Stop the menu music during level dialogs
+	MusicManager.stop_menu_music()
+	
 	create_ui_elements()
 	button.pressed.connect(_on_button_pressed)
 	
