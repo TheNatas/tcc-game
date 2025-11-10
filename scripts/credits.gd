@@ -51,7 +51,7 @@ func _ready() -> void:
 
 	# Game Development Section
 	var dev_title := Label.new()
-	dev_title.text = "Desenvolvimento do Jogo"
+	dev_title.text = "Desenvolvimento"
 	dev_title.add_theme_font_size_override("font_size", 24)
 	vbox.add_child(dev_title)
 
@@ -65,12 +65,12 @@ func _ready() -> void:
 
 	# Project Supervision Section
 	var supervision_title := Label.new()
-	supervision_title.text = "Supervisão do Projeto"
+	supervision_title.text = "Supervisão"
 	supervision_title.add_theme_font_size_override("font_size", 24)
 	vbox.add_child(supervision_title)
 
 	var orientator := Label.new()
-	orientator.text = "Orientador do Projeto: Giácomo Antônio Althoff Bolan"
+	orientator.text = "Orientador do Projeto: Giácomo Antônio Althoff Bolan\n(kinhobolan@live.com)"
 	orientator.add_theme_font_size_override("font_size", 16)
 	vbox.add_child(orientator)
 
@@ -84,7 +84,7 @@ func _ready() -> void:
 	vbox.add_child(consultancy_title)
 
 	var consultant := Label.new()
-	consultant.text = "Consultora de Pedagogia Musical: Édina Reginar Baumer"
+	consultant.text = "Consultora de Pedagogia Musical: Édina Reginar Baumer\n(erb@unesc.net)"
 	consultant.add_theme_font_size_override("font_size", 16)
 	vbox.add_child(consultant)
 
